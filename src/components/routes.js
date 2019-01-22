@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import ResetPassword from './ResetPassword';
 
 const routes = () => (
   <Router>
-    <Fragment>
-      <Route path='/account/reset-password' component={ResetPassword} />
+    <Switch>
+      <Route exact path='/account/reset-password' component={ResetPassword} />
       <Route path='*' component={Home} />
-    </Fragment>
+    </Switch>
   </Router>
 );
 
