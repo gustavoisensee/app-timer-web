@@ -1,9 +1,11 @@
-import ResetPassword from './ResetPassword';
 import { withFormik } from 'formik';
 import queryString from 'query-string';
-import jwt from 'jsonwebtoken';
+import ResetPassword from './ResetPassword';
+import { resetPassword } from '../../services/account';
+import { CLIENT_ERROR } from '../../constants/httpStatus';
+import { SUCCESS, ERROR } from '../../constants/status';
 
-const publicKey = 'app-timer-api-v1';
+const errorMessage = 'Token is invalid or expired!';
 
 const EnhancedForm = withFormik({
   mapPropsToValues: () => ({
@@ -23,16 +25,35 @@ const EnhancedForm = withFormik({
   },
 
   handleSubmit: (values, { props, resetForm, setErrors, setStatus, setSubmitting }) => {
-    const { token } = queryString.parse(props.location.search);
-    const verified = jwt.verify(token, publicKey);
+    try {
+      const { token } = queryString.parse(props.location.search);
 
-    if (verified && verified.email && verified.userId) {
-      // TODO: make a call to reset password
-      setTimeout(() => {
-        resetForm();
-        setStatus('success');
-        setSubmitting(false);
-      }, 2000);
+      if (token) {
+        resetPassword({ ...values, token })
+          .then(response => {
+            resetForm();
+            if ([
+              CLIENT_ERROR.badRequest,
+              CLIENT_ERROR.unauthorized,
+            ].includes(response.status)) {
+              setStatus(ERROR);
+              setErrors({ api: errorMessage });
+            } else {
+              setStatus(SUCCESS);
+            }
+            setSubmitting(false);
+          })
+          .catch(() => {
+            resetForm();
+            setStatus(ERROR);
+            setErrors({ api: errorMessage });
+            setSubmitting(false);
+          });
+      }
+    } catch (e) {
+      setStatus(ERROR);
+      setErrors({ api: errorMessage });
+      setSubmitting(false);
     }
   },
   displayName: 'ResetPassworForm',

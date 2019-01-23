@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { ERROR, SUCCESS } from '../../constants/status';
 import './ResetPassword.scss';
 
 class ResetPassword extends PureComponent {
@@ -9,21 +10,23 @@ class ResetPassword extends PureComponent {
       handleBlur,
       handleChange,
       handleSubmit,
-      values
+      values,
+      status
     } = this.props;
 
     return (
       <div className='ResetPassword'>
         <form onSubmit={handleSubmit}>
-          <h2>
+          <h3>
             App timer web - reset password
-          </h2>
+          </h3>
           <input
             type='password'
             onBlur={handleBlur}
             onChange={handleChange}
             value={values.password}
             name='password'
+            placeholder='New password'
             className={errors.password && 'input-error'}
           />
           <button
@@ -32,6 +35,12 @@ class ResetPassword extends PureComponent {
           >
             {isSubmitting ? 'Submitting...' : 'Reset'}
           </button>
+          <span className='error-message'>
+            {status === ERROR && errors.api}
+          </span>
+          <span className='success-message'>
+            {status === SUCCESS && 'Password has been successfully reset!'}
+          </span>
         </form>
       </div>
     );
