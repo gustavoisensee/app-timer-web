@@ -49,6 +49,10 @@ const EnhancedForm = withFormik({
             setErrors({ api: errorMessage });
             setSubmitting(false);
           });
+      } else {
+        setStatus(ERROR);
+        setErrors({ api: errorMessage });
+        setSubmitting(false);
       }
     } catch (e) {
       setStatus(ERROR);

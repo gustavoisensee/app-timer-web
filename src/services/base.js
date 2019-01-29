@@ -1,4 +1,6 @@
-const apiUrl = 'https://app-timer-api-8bhdu3uct.now.sh/';
+const apiUrl = (
+  process.env.PATH_API || 'https://app-timer-api.herokuapp.com/'
+);
 
 const createUrl = (path) => `${apiUrl}${path}`;
 
