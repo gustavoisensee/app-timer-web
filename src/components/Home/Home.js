@@ -5,7 +5,7 @@ class Home extends PureComponent {
   render() {
     return (
       <div className="Home">
-        App timer web
+        My finances web
       </div>
     );
   }

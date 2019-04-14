@@ -1,5 +1,5 @@
 const apiUrl = (
-  process.env.PATH_API || 'https://app-timer-api.herokuapp.com/'
+  process.env.PATH_API || 'https://my-finances-api.herokuapp.com/'
 );
 
 const createUrl = (path) => `${apiUrl}${path}`;
