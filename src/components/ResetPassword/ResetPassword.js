@@ -18,7 +18,7 @@ class ResetPassword extends PureComponent {
       <div className='ResetPassword'>
         <form onSubmit={handleSubmit}>
           <h3>
-            App timer web - reset password
+            My finances web - reset password
           </h3>
           <input
             type='password'

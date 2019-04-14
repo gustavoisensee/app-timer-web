@@ -1,2 +1,2 @@
-# app-timer-web
-App timer web is an auxiliary spa for some specific features related to app-timer app.
+# My finances web
+My finances web is an auxiliary spa for some specific features related to my-finances-app.
