@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "formik": "^1.4.2",
+    "formik": "^1.5.2",
     "node-sass": "^4.11.0",
     "query-string": "^6.2.0",
     "react": "^16.7.0",
