@@ -1,8 +1,10 @@
 import React from 'react';
-
+import './styles.scss';
 
 const Login = props => {
   const {
+    isSubmitting,
+    values,
     touched,
     errors,
     handleChange,
@@ -10,21 +12,24 @@ const Login = props => {
     handleSubmit,
   } = props;
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="Login">
       <input
-        type="text"
+        type="email"
         onChange={handleChange}
         onBlur={handleBlur}
-        name="name"
+        name="email"
+        value={values.email}
       />
+      {errors.email && touched.email && <div>{errors.email}</div>}
       <input
         type="password"
         onChange={handleChange}
         onBlur={handleBlur}
         name="password"
+        value={values.password}
       />
-      {errors.name && touched.name && <div id="feedback">{errors.name}</div>}
-      <button type="submit">Submit</button>
+      {errors.password && touched.password && <div>{errors.password}</div>}
+      <button type="submit" disabled={isSubmitting}>Submit</button>
     </form>
   );
 };

@@ -9,9 +9,31 @@ body,
   height: 100%;
   width: 100%;
   font-family: 'Roboto', sans-serif;
+  font-size: 14px;
 
   input,
   button {
+    font-size: 14px;
     outline: none;
+    height: 40px;
+    font-size: 14px;
+    background-color: #111;
+    border: 0;
+    border-radius: 3px;
+  }
+
+  input {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    height: 24px;
+    padding: 8px;
+    margin: 8px;
+    background-color: #ffffff;
+  }
+
+  button {
+    color: #fff;
+    margin: 8px;
+    cursor: pointer;
   }
 }
