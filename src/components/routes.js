@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './Home';
+import App from './App';
 import ResetPassword from './ResetPassword';
 import Logout from './Logout';
 import {
@@ -13,7 +13,7 @@ const routes = () => (
     <Switch>
       <Route exact path={ACCOUNT_LOGOUT} component={Logout} />
       <Route exact path={ACCOUNT_RESET_PASSWORD} component={ResetPassword} />
-      <Route path='*' component={Home} />
+      <Route path='*' component={App} />
     </Switch>
   </Router>
 );

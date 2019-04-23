@@ -5,9 +5,9 @@ import { USER } from '../../constants/storageKeys';
 import Login from '../Login';
 import Dashboard from '../Dashboard';
 import NavBar from '../NavBar';
-import './Home.scss';
+import './styles.scss';
 
-class Home extends PureComponent {
+class App extends PureComponent {
   state = {
     isLogged: false
   }
@@ -23,7 +23,7 @@ class Home extends PureComponent {
   render() {
     const { isLogged, user } = this.state;
     return (
-      <div className="Home">
+      <div className="App">
         <NavBar user={user} />
         {isLogged ?
           (<Dashboard />) :
@@ -33,4 +33,4 @@ class Home extends PureComponent {
   }
 }
 
-export default Home;
+export default App;
