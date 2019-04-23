@@ -3,6 +3,7 @@
   padding: 8px;
   border-radius: 3px;
   box-shadow: 0px 4px 10px 0px #ccc;
+  margin-bottom: 24px;
 
   &__title {
     display: flex;
@@ -16,12 +17,14 @@
     flex-direction: column;
     opacity: 0;
     height: 0;
-    transition: all 0.4s;
+    overflow: hidden;
+    transition: all 0.4s ease-out;
   }
 
   &__container-active {
     opacity: 1;
     height: auto;
+    transition: all 0.4s ease-out;
   }
 
   &__group {
