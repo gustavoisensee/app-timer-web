@@ -1,0 +1,61 @@
+.Card {
+  min-width: 300px;
+  padding: 8px;
+  border-radius: 3px;
+  box-shadow: 0px 4px 10px 0px #ccc;
+  margin-bottom: 24px;
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease-out;
+  }
+
+  &__container-active {
+    opacity: 1;
+    height: auto;
+    transition: all 0.4s ease-out;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% - 16px);
+    padding: 8px;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px;
+    margin-bottom: 8px;
+
+    &__title {
+      font-weight: bold;
+      background-color: #ccc;
+      border-radius: 3px;
+    }
+
+    &__row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: calc(100% - 16px);
+      padding: 8px;
+    }
+
+    &__footer {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+  
+  }
+}

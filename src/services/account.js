@@ -7,3 +7,13 @@ export const resetPassword = ({ password, token }) => {
 
   return post(path, params);
 };
+
+export const login = ({ email, password }) => {
+  const path = 'account/login';
+  const params = {
+    email,
+    password
+  };
+
+  return post(path, params);
+};
