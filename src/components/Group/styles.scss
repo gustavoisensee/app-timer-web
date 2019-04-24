@@ -51,5 +51,11 @@
       width: calc(100% - 16px);
       padding: 8px;
     }
+
+    &__footer {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+  
   }
 }
