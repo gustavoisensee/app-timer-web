@@ -3,28 +3,41 @@ import './styles.scss';
 
 class Group extends PureComponent {
   state = {
-    active: false
+    active: false,
+    editable: false,
   }
 
   handleToggle = () => {
     this.setState({ active: !this.state.active });
   }
 
+  handleEditClick = (e) => {
+    e.stopPropagation();
+    this.setState({ editable: !this.state.editable });
+  }
+
   render() {
     const { item, index } = this.props;
-    const { active } = this.state;
+    const { active, editable } = this.state;
     const cardContainerClass = `Card__container${active ? '-active' : ''}`;
-    const totalIncome = item.income.reduce((acc, cur) => (acc + cur), 0);
     const totalItems = item.groups && item.groups.length &&
       item.groups.reduce((acc, cur) => (acc + cur.totalItems), 0);
 
     return (
       <div key={`month-${index}`} className="Card">
         <div className="Card__title" onClick={this.handleToggle}>
-          <h3>{item.month}</h3>
-          <h3>{totalIncome}</h3>
+          {editable ?
+            <input /> :
+            <h3>{item.month}</h3>}
+          <div className="Card__title__buttons">
+            <button type="button" onClick={this.handleEditClick}>
+              {editable ? 'Edit' : 'Save'}
+            </button>
+            {editable ? <input /> : <h3>{item.income}</h3>}
+          </div>
         </div>
         <div className={cardContainerClass}>
+          <button type="button" className="Card__group-add">Add group</button>
           {item.groups && item.groups.map((g, i) => (
             <div key={`group-${i}`} className="Card__group">
               <div className="Card__group__row Card__group__title">
@@ -49,7 +62,7 @@ class Group extends PureComponent {
           </div>
           <div className="Card__group__row">
             <span>Total left:</span>
-            <span>{(totalIncome - totalItems)}</span>
+            <span>{(item.income - totalItems)}</span>
           </div>
         </div>
       </div>

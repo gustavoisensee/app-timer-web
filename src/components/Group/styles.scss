@@ -10,6 +10,10 @@
     flex-direction: row;
     justify-content: space-between;
     cursor: pointer;
+
+    &__buttons {
+      display: flex;
+    }
   }
 
   &__container {
@@ -40,7 +44,7 @@
     &__title {
       font-weight: bold;
       background-color: #ccc;
-      border-radius: 3px;
+      border-radius: 3px 3px 0 0;
     }
 
     &__row {
@@ -50,11 +54,13 @@
       align-items: center;
       width: calc(100% - 16px);
       padding: 8px;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
     }
 
     &__footer {
       border: 1px solid #ccc;
-      border-radius: 3px;
+      border-radius: 0 0 3px 3px;
     }
   
   }
