@@ -23,13 +23,11 @@ class Dashboard extends PureComponent {
   }
 
   handleAddNewMonth = () => {
-    // const { data } = this.state;
-    // data.unshift();
     const { setValues, values } = this.props;
     const item = {
       year: 2019,
-      month: this.month.value,
-      income: this.income.value,
+      month: values.month,
+      income: values.income,
       groups: []
     };
     setValues({ data: [item, ...values.data] });
@@ -41,7 +39,11 @@ class Dashboard extends PureComponent {
   }
 
   render() {
-    const { values: { data } } = this.props;
+    const {
+      values: { data },
+      handleChange,
+      handleBlur
+    } = this.props;
     const { year, addNewMonth } = this.state;
     const list = (data && data.length && data.filter(d => d.year === Number(year))) || EMPTY_ARRAY;
 
@@ -62,15 +64,17 @@ class Dashboard extends PureComponent {
           <div className="AddNewMonth">
             <div className="AddNewMonth__inputs">
             <input
-                ref={(ref) => this.month = ref}
-                id="month"
                 type="text"
+                name="month"
+                onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Month name"
               />
               <input
-                ref={(ref) => this.income = ref}
-                id="income"
+                name="income"
                 type="number"
+                onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Income"
               />
             </div>
@@ -86,7 +90,7 @@ class Dashboard extends PureComponent {
             </div>
           </div>
         )}
-        {list.map((m, i) => <Group key={i} index={i} item={m} />)}
+        {list.map((m, i) => <Group key={i} index={i} item={m} {...this.props} />)}
       </div>
     );
   }

@@ -17,7 +17,7 @@ class Group extends PureComponent {
   }
 
   render() {
-    const { item, index } = this.props;
+    const { item, index, handleChange, handleBlur } = this.props;
     const { active, editable } = this.state;
     const cardContainerClass = `Card__container${active ? '-active' : ''}`;
     const totalItems = item.groups && item.groups.length &&
@@ -27,13 +27,25 @@ class Group extends PureComponent {
       <div key={`month-${index}`} className="Card">
         <div className="Card__title" onClick={this.handleToggle}>
           {editable ?
-            <input /> :
+            <input
+              value={item.month}
+              name={`data.${index}.month`}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            /> :
             <h3>{item.month}</h3>}
           <div className="Card__title__buttons">
             <button type="button" onClick={this.handleEditClick}>
-              {editable ? 'Edit' : 'Save'}
+              {editable ? 'Save' : 'Edit'}
             </button>
-            {editable ? <input /> : <h3>{item.income}</h3>}
+            {editable ?
+              <input
+                value={item.income}
+                name={`data.${index}.income`}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              /> :
+              <h3>{item.income}</h3>}
           </div>
         </div>
         <div className={cardContainerClass}>
