@@ -5,109 +5,15 @@ import './styles.scss';
 
 const EMPTY_ARRAY = [];
 
-const _data = [
-  {
-    year: 2019,
-    month: "March",
-    income: 3633,
-    groups: [
-      {
-        name: 'Gloceries',
-        total: 300,
-        totalItems: 0,
-        items: [
-        ]
-      },
-      {
-        name: 'Health Ensurance',
-        total: 235,
-        totalItems: 0,
-        items: [
-        ]
-      }
-    ]
-  },
-  {
-    year: 2019,
-    month: "February",
-    income: 3500,
-    groups: [
-      {
-        name: 'Gloceries',
-        total: 300,
-        totalItems: 46.65,
-        items: [
-          { description: 'Albert heijn 1', value: 12.33 },
-          { description: 'Albert heijn 2', value: 34.22 },
-        ]
-      },
-      {
-        name: 'Health Ensurance',
-        total: 235,
-        totalItems: 135,
-        items: [
-          { description: 'Bru HE', value: 135 },
-        ]
-      }
-    ]
-  },
-  {
-    year: 2019,
-    month: "January",
-    income: 3500,
-    groups: [
-      {
-        name: 'Gloceries',
-        total: 300,
-        totalItems: 46.65,
-        items: [
-          { description: 'Albert heijn 1', value: 12.33 },
-          { description: 'Albert heijn 2', value: 34.22 },
-          { description: 'Albert heijn 3', value: 45.11 },
-        ]
-      },
-      {
-        name: 'Health Ensurance',
-        total: 235,
-        totalItems: 135,
-        items: [
-          { description: 'Bru HE', value: 135 },
-        ]
-      }
-    ]
-  },
-  {
-    year: 2018,
-    month: "December",
-    income: 3500,
-    groups: [
-      {
-        name: 'Gloceries',
-        total: 300,
-        totalItems: 0,
-        items: [
-        ]
-      },
-      {
-        name: 'Health Ensurance',
-        total: 235,
-        totalItems: 0,
-        items: [
-        ]
-      }
-    ]
-  },
-];
 
 const _options = [
   { value: 2019, label: '2019' },
   { value: 2018, label: '2018' },
 ];
 
-
 class Dashboard extends PureComponent {
   state = {
-    data: _data,
+    // data: this.props.values.data,
     year: new Date().getFullYear(),
     addNewMonth: false,
   }
@@ -117,14 +23,17 @@ class Dashboard extends PureComponent {
   }
 
   handleAddNewMonth = () => {
-    const { data } = this.state;
-    data.unshift({
+    // const { data } = this.state;
+    // data.unshift();
+    const { setValues, values } = this.props;
+    const item = {
       year: 2019,
       month: this.month.value,
       income: this.income.value,
       groups: []
-    });
-    this.setState({ addNewMonth: false, data });
+    };
+    setValues({ data: [item, ...values.data] });
+    this.setState({ addNewMonth: false});
   }
 
   handleToggleAddNewMonth = () => {
@@ -132,7 +41,8 @@ class Dashboard extends PureComponent {
   }
 
   render() {
-    const { year, data, addNewMonth } = this.state;
+    const { values: { data } } = this.props;
+    const { year, addNewMonth } = this.state;
     const list = (data && data.length && data.filter(d => d.year === Number(year))) || EMPTY_ARRAY;
 
     return (
