@@ -63,7 +63,7 @@ class Dashboard extends PureComponent {
         {addNewMonth && (
           <div className="AddNewMonth">
             <div className="AddNewMonth__inputs">
-            <input
+              <input
                 type="text"
                 name="month"
                 onChange={handleChange}
