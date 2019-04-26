@@ -15,7 +15,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "scripts": {
-    "start": "PORT=3001 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "lint:js": "eslint ."
