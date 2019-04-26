@@ -25,3 +25,9 @@
     color: black !important;
   }
 }
+
+.AddNewItem {
+  &__inputs {
+    display: flex;
+  }
+}

@@ -5,7 +5,8 @@ class Group extends PureComponent {
   state = {
     active: false,
     editable: false,
-    addNewItem: false
+    addNewItem: false,
+    addNewSubItem: false
   }
 
   handleToggle = () => {
@@ -16,6 +17,44 @@ class Group extends PureComponent {
     this.setState({ addNewItem: !this.state.addNewItem });
   }
 
+  handleToggleAddNewSubItem = () => {
+    this.setState({ addNewSubItem: !this.state.addNewSubItem });
+  }
+
+  handleAddNewItem = () => {
+    const {
+      index,
+      values: { itemName, itemValue, data },
+      setValues
+    } = this.props;
+    
+    data[index].groups.push({
+      name: itemName,
+      total: itemValue,
+      totalItems: 0,
+      items: []
+    });
+
+    setValues({ data });
+    this.setState({ addNewItem: false });
+  }
+
+  handleAddNewSubItem = (itemIndex) => {
+    const {
+      index: monthIndex,
+      values: { subItemName, subItemValue, data },
+      setValues
+    } = this.props;
+
+    data[monthIndex].groups[itemIndex].items.push({
+      description: subItemName,
+      value: subItemValue
+    });
+    
+    setValues({ data });
+    this.setState({ addNewSubItem: false });
+  }
+
   handleEditClick = (e) => {
     e.stopPropagation();
     this.setState({ editable: !this.state.editable });
@@ -23,7 +62,7 @@ class Group extends PureComponent {
 
   render() {
     const { item, index, handleChange, handleBlur } = this.props;
-    const { active, editable, addNewItem } = this.state;
+    const { active, editable, addNewItem, addNewSubItem } = this.state;
     const cardContainerClass = `Card__container${active ? '-active' : ''}`;
     const totalItems = item.groups && item.groups.length &&
       item.groups.reduce((acc, cur) => (acc + cur.totalItems), 0);
@@ -54,19 +93,19 @@ class Group extends PureComponent {
           </div>
         </div>
         <div className={cardContainerClass}>
-          <button type="button" className="Card__group-add" onClick={this.handleToggleAddNewItem}>Add group</button>
+          <button type="button" className="Card__group-add" onClick={this.handleToggleAddNewItem}>Add Item</button>
           {addNewItem && (
             <div>
               <div className="AddNewMonth__inputs">
                 <input
                   type="text"
-                  name="groupName"
+                  name="itemName"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="Group name"
                 />
                 <input
-                  name="groupValur"
+                  name="itemValue"
                   type="number"
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -77,6 +116,7 @@ class Group extends PureComponent {
                 <button
                   className="AddNewMonth__button"
                   type="button"
+                  onClick={this.handleAddNewItem}
                 >Save</button>
                 <button
                   className="AddNewMonth__button"
@@ -90,8 +130,43 @@ class Group extends PureComponent {
             <div key={`group-${i}`} className="Card__group">
               <div className="Card__group__row Card__group__title">
                 <span>{g.name}</span>
-                <span>{g.total}</span>
+                <div>
+                  <button type="button" onClick={this.handleToggleAddNewSubItem}>Add sub item</button>
+                  <span>{g.total}</span>
+                </div>
               </div>
+              {addNewSubItem && (
+                <div>
+                  <div className="AddNewItem__inputs">
+                    <input
+                      type="text"
+                      name="subItemName"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      placeholder="Item name"
+                    />
+                    <input
+                      name="subItemValue"
+                      type="number"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      placeholder="Value"
+                    />
+                  </div>
+                  <div>
+                    <button
+                      className="AddNewMonth__button"
+                      type="button"
+                      onClick={() => this.handleAddNewSubItem(i)}
+                    >Save</button>
+                    <button
+                      className="AddNewMonth__button"
+                      type="button"
+                      onClick={this.handleToggleAddNewSubItem}
+                    >Cancel</button>
+                  </div>
+                </div>
+              )}
               {g.items && g.items.map((item, i) => (
                 <div key={`item-${i}`} className="Card__group__row">
                   <span>{item.description}</span>
