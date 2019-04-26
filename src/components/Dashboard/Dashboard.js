@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Select from 'react-select';
-import Group from '../Group';
+import Month from '../Month';
 import './styles.scss';
 
 const EMPTY_ARRAY = [];
@@ -28,7 +28,7 @@ class Dashboard extends PureComponent {
       year: 2019,
       month: values.month,
       income: values.income,
-      groups: []
+      items: []
     };
     setValues({ data: [item, ...values.data] });
     this.setState({ addNewMonth: false});
@@ -45,7 +45,7 @@ class Dashboard extends PureComponent {
       handleBlur
     } = this.props;
     const { year, addNewMonth } = this.state;
-    const list = (data && data.length && data.filter(d => d.year === Number(year))) || EMPTY_ARRAY;
+    const filteredData = (data && data.length && data.filter(d => d.year === Number(year))) || EMPTY_ARRAY;
 
     return (
       <div className="Dashboard">
@@ -90,7 +90,14 @@ class Dashboard extends PureComponent {
             </div>
           </div>
         )}
-        {list.map((m, i) => <Group key={i} index={i} item={m} {...this.props} />)}
+        {filteredData.map((month, i) => (
+          <Month
+            key={i}
+            index={i}
+            month={month}
+            {...this.props}
+          />
+        ))}
       </div>
     );
   }

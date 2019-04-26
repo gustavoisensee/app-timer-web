@@ -6,19 +6,19 @@ const _data = [
     year: 2019,
     month: "March",
     income: 3633,
-    groups: [
+    items: [
       {
         name: 'Gloceries',
         total: 300,
         totalItems: 0,
-        items: [
+        subItems: [
         ]
       },
       {
         name: 'Health Ensurance',
         total: 235,
         totalItems: 0,
-        items: [
+        subItems: [
         ]
       }
     ]
@@ -27,12 +27,12 @@ const _data = [
     year: 2019,
     month: "February",
     income: 3500,
-    groups: [
+    items: [
       {
         name: 'Gloceries',
         total: 300,
         totalItems: 46.65,
-        items: [
+        subItems: [
           { description: 'Albert heijn 1', value: 12.33 },
           { description: 'Albert heijn 2', value: 34.22 },
         ]
@@ -41,7 +41,7 @@ const _data = [
         name: 'Health Ensurance',
         total: 235,
         totalItems: 135,
-        items: [
+        subItems: [
           { description: 'Bru HE', value: 135 },
         ]
       }
@@ -51,12 +51,12 @@ const _data = [
     year: 2019,
     month: "January",
     income: 3500,
-    groups: [
+    items: [
       {
         name: 'Gloceries',
         total: 300,
         totalItems: 46.65,
-        items: [
+        subItems: [
           { description: 'Albert heijn 1', value: 12.33 },
           { description: 'Albert heijn 2', value: 34.22 },
           { description: 'Albert heijn 3', value: 45.11 },
@@ -66,7 +66,7 @@ const _data = [
         name: 'Health Ensurance',
         total: 235,
         totalItems: 135,
-        items: [
+        subItems: [
           { description: 'Bru HE', value: 135 },
         ]
       }
@@ -76,19 +76,19 @@ const _data = [
     year: 2018,
     month: "December",
     income: 3500,
-    groups: [
+    items: [
       {
         name: 'Gloceries',
         total: 300,
         totalItems: 0,
-        items: [
+        subItems: [
         ]
       },
       {
         name: 'Health Ensurance',
         total: 235,
         totalItems: 0,
-        items: [
+        subItems: [
         ]
       }
     ]

@@ -28,11 +28,11 @@ class Group extends PureComponent {
       setValues
     } = this.props;
     
-    data[index].groups.push({
+    data[index].items.push({
       name: itemName,
       total: itemValue,
       totalItems: 0,
-      items: []
+      subItems: []
     });
 
     setValues({ data });
@@ -46,7 +46,7 @@ class Group extends PureComponent {
       setValues
     } = this.props;
 
-    data[monthIndex].groups[itemIndex].items.push({
+    data[monthIndex].items[itemIndex].subItems.push({
       description: subItemName,
       value: subItemValue
     });
@@ -61,35 +61,35 @@ class Group extends PureComponent {
   }
 
   render() {
-    const { item, index, handleChange, handleBlur } = this.props;
+    const { month, index, handleChange, handleBlur } = this.props;
     const { active, editable, addNewItem, addNewSubItem } = this.state;
     const cardContainerClass = `Card__container${active ? '-active' : ''}`;
-    const totalItems = item.groups && item.groups.length &&
-      item.groups.reduce((acc, cur) => (acc + cur.totalItems), 0);
+    const totalItems = month.items && month.items.length &&
+      month.items.reduce((acc, cur) => (acc + cur.totalItems), 0);
 
     return (
       <div key={`month-${index}`} className="Card">
         <div className="Card__title" onClick={this.handleToggle}>
           {editable ?
             <input
-              value={item.month}
+              value={month.month}
               name={`data.${index}.month`}
               onChange={handleChange}
               onBlur={handleBlur}
             /> :
-            <h3>{item.month}</h3>}
+            <h3>{month.month}</h3>}
           <div className="Card__title__buttons">
             <button type="button" onClick={this.handleEditClick}>
               {editable ? 'Save' : 'Edit'}
             </button>
             {editable ?
               <input
-                value={item.income}
+                value={month.income}
                 name={`data.${index}.income`}
                 onChange={handleChange}
                 onBlur={handleBlur}
               /> :
-              <h3>{item.income}</h3>}
+              <h3>{month.income}</h3>}
           </div>
         </div>
         <div className={cardContainerClass}>
@@ -126,7 +126,7 @@ class Group extends PureComponent {
               </div>
             </div>
           )}
-          {item.groups && item.groups.map((g, i) => (
+          {month.items && month.items.map((g, i) => (
             <div key={`group-${i}`} className="Card__group">
               <div className="Card__group__row Card__group__title">
                 <span>{g.name}</span>
@@ -167,7 +167,7 @@ class Group extends PureComponent {
                   </div>
                 </div>
               )}
-              {g.items && g.items.map((item, i) => (
+              {g.subItems && g.subItems.map((item, i) => (
                 <div key={`item-${i}`} className="Card__group__row">
                   <span>{item.description}</span>
                   <span>{item.value}</span>
@@ -185,7 +185,7 @@ class Group extends PureComponent {
           </div>
           <div className="Card__group__row">
             <span>Total left:</span>
-            <span>{(item.income - totalItems)}</span>
+            <span>{(month.income - totalItems)}</span>
           </div>
         </div>
       </div>
