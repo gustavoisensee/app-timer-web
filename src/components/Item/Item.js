@@ -65,11 +65,9 @@ class Item extends Component {
         {subItems && subItems.map((item, indexSubItem) => (
           <SubItem
             key={`subitem-${indexItem}-${indexSubItem}`} 
-            indexMonth={indexMonth}
             indexItem={indexItem}
             indexSubItem={indexSubItem}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
+            {...this.props}
             {...item}
           />
         ))}

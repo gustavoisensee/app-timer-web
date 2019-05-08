@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import Select from 'react-select';
 import Month from '../Month';
+import MonthForm from '../MonthForm';
 import './styles.scss';
 
 const EMPTY_ARRAY = [];
@@ -22,30 +23,26 @@ class Dashboard extends PureComponent {
     this.setState({ year: e.value });
   }
 
-  handleAddNewMonth = () => {
-    const { setValues, values } = this.props;
-    const item = {
-      year: 2019,
-      month: values.month,
-      income: values.income,
-      items: []
-    };
-    setValues({ data: [item, ...values.data] });
-    this.setState({ addNewMonth: false});
-  }
-
   handleToggleAddNewMonth = () => {
     this.setState({ addNewMonth: !this.state.addNewMonth });
   }
 
   render() {
     const {
-      values: { data },
       handleChange,
-      handleBlur
+      handleBlur,
+      values,
+      setValues
     } = this.props;
     const { year, addNewMonth } = this.state;
+    const { data } = values;
     const filteredData = (data && data.length && data.filter(d => d.year === Number(year))) || EMPTY_ARRAY;
+    const basic = {
+      handleChange,
+      handleBlur,
+      values,
+      setValues
+    };
 
     return (
       <div className="Dashboard">
@@ -61,40 +58,17 @@ class Dashboard extends PureComponent {
           <button type="button" onClick={this.handleToggleAddNewMonth}>Add month</button>
         </div>
         {addNewMonth && (
-          <div className="AddNewMonth">
-            <div className="AddNewMonth__inputs">
-              <input
-                type="text"
-                name="month"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="Month name"
-              />
-              <input
-                name="income"
-                type="number"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="Income"
-              />
-            </div>
-            <div>
-              <button
-                className="AddNewMonth__button"
-                type="button"
-                onClick={this.handleAddNewMonth}>Save</button>
-              <button
-                className="AddNewMonth__button"
-                type="button"
-                onClick={this.handleToggleAddNewMonth}>Cancel</button>
-            </div>
-          </div>
+          <MonthForm
+            handleToggle={this.handleToggleAddNewMonth}
+            {...basic}
+          />
         )}
         {filteredData.map((month, indexMonth) => (
           <Month
             key={`month-${indexMonth}`}
             indexMonth={indexMonth}
             month={month}
+            {...basic}
             {...this.props}
           />
         ))}
