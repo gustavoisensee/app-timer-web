@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 class SubItemForm extends Component {
   handleAddNewSubItem = (itemIndex) => {
     const {
-      index: monthIndex,
+      indexMonth,
       values: { subItemName, subItemValue, data },
       setValues,
       handleToggle
     } = this.props;
 
-    data[monthIndex].items[itemIndex].subItems.push({
+    data[indexMonth].items[itemIndex].subItems.push({
       description: subItemName,
       value: subItemValue
     });

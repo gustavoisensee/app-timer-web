@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 class ItemForm extends Component {
   handleAddNewItem = () => {
     const {
-      index,
+      indexMonth,
       values: { itemName, itemValue, data },
       setValues,
       handleToggle
     } = this.props;
     
-    data[index].items.push({
+    data[indexMonth].items.push({
       name: itemName,
       total: itemValue,
       totalItems: 0,

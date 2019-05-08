@@ -90,10 +90,10 @@ class Dashboard extends PureComponent {
             </div>
           </div>
         )}
-        {filteredData.map((month, i) => (
+        {filteredData.map((month, indexMonth) => (
           <Month
-            key={`month-${i}`}
-            i={i}
+            key={`month-${indexMonth}`}
+            indexMonth={indexMonth}
             month={month}
             {...this.props}
           />
