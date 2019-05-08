@@ -25,7 +25,7 @@ class Group extends PureComponent {
   }
 
   render() {
-    const { indexMonth, month, handleChange, handleBlur } = this.props;
+    const { indexMonth, month, handleChange, handleBlur, values, setValues } = this.props;
     const { active, editable, addNewItem } = this.state;
     const cardContainerClass = `Card__container${active ? '-active' : ''}`;
     const totalItems = month.items && month.items.length &&
@@ -70,8 +70,11 @@ class Group extends PureComponent {
               key={`item-${indexItem}`}
               indexItem={indexItem}
               indexMonth={indexMonth}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              values={values}
+              setValues={setValues}
               {...item}
-              {...this.props}
             />
           ))}
           <div className="Card__group__row">

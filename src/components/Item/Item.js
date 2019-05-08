@@ -62,8 +62,16 @@ class Item extends Component {
             {...this.props}
           />
         )}
-        {subItems && subItems.map((item, i) => (
-          <SubItem key={`subitem-${i}`} i={i} {...item} />
+        {subItems && subItems.map((item, indexSubItem) => (
+          <SubItem
+            key={`subitem-${indexItem}-${indexSubItem}`} 
+            indexMonth={indexMonth}
+            indexItem={indexItem}
+            indexSubItem={indexSubItem}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            {...item}
+          />
         ))}
         <div className="Card__group__row Card__group__footer">
           <span>Total left:</span>
