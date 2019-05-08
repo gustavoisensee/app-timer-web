@@ -27,7 +27,7 @@ class Item extends Component {
         {addNewSubItem && (
           <SubItemForm
             i={i}
-            handleCancel={this.handleToggleAddNewSubItem}
+            handleToggle={this.handleToggleAddNewSubItem}
             {...this.props}
           />
         )}

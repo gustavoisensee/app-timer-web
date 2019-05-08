@@ -6,7 +6,7 @@ class SubItemForm extends Component {
       index: monthIndex,
       values: { subItemName, subItemValue, data },
       setValues,
-      handleCancel
+      handleToggle
     } = this.props;
 
     data[monthIndex].items[itemIndex].subItems.push({
@@ -15,11 +15,11 @@ class SubItemForm extends Component {
     });
     
     setValues({ data });
-    handleCancel();
+    handleToggle();
   }
 
   render() {
-    const { i, handleChange, handleBlur, handleCancel } = this.props;
+    const { i, handleChange, handleBlur, handleToggle } = this.props;
 
     return (
       <div>
@@ -48,7 +48,7 @@ class SubItemForm extends Component {
           <button
             className="AddNewMonth__button"
             type="button"
-            onClick={handleCancel}
+            onClick={handleToggle}
           >Cancel</button>
         </div>
       </div>
