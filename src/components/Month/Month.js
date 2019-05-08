@@ -28,8 +28,6 @@ class Group extends PureComponent {
     const { indexMonth, month, handleChange, handleBlur } = this.props;
     const { active, editable, addNewItem } = this.state;
     const cardContainerClass = `Card__container${active ? '-active' : ''}`;
-    const totalItems = month.items && month.items.length &&
-      month.items.reduce((acc, cur) => (acc + cur.totalItems), 0);
 
     return (
       <div key={`month-${indexMonth}`} className="Card">
@@ -73,14 +71,6 @@ class Group extends PureComponent {
               {...item}
             />
           ))}
-          <div className="Card__group__row">
-            <span>Total spent:</span>
-            <span>{totalItems}</span>
-          </div>
-          <div className="Card__group__row">
-            <span>Total left:</span>
-            <span>{(month.income - totalItems)}</span>
-          </div>
         </div>
       </div>
     );

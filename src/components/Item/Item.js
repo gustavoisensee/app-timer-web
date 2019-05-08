@@ -19,9 +19,10 @@ class Item extends Component {
   render() {
     const { addNewSubItem, editable } = this.state;
     const {
-      indexMonth, indexItem, name, subItems, total, totalItems,
+      indexMonth, indexItem, name, subItems, total,
       handleChange, handleBlur
     } = this.props;
+    let totalItems = 0;
 
     return (
       <div key={`item-${indexItem}`} className="Card__group">
@@ -62,15 +63,18 @@ class Item extends Component {
             {...this.props}
           />
         )}
-        {subItems && subItems.map((item, indexSubItem) => (
-          <SubItem
-            key={`subitem-${indexItem}-${indexSubItem}`} 
-            indexItem={indexItem}
-            indexSubItem={indexSubItem}
-            {...this.props}
-            {...item}
-          />
-        ))}
+        {subItems && subItems.map((item, indexSubItem) => {
+          totalItems += item.value;
+          return (
+            <SubItem
+              key={`subitem-${indexItem}-${indexSubItem}`} 
+              indexItem={indexItem}
+              indexSubItem={indexSubItem}
+              {...this.props}
+              {...item}
+            />
+          )
+        })}
         <div className="Card__group__row Card__group__footer">
           <span>Total left:</span>
           <span>{(total - totalItems)}</span>

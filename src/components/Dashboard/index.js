@@ -10,14 +10,12 @@ const _data = [
       {
         name: 'Gloceries',
         total: 300,
-        totalItems: 0,
         subItems: [
         ]
       },
       {
         name: 'Health Ensurance',
         total: 235,
-        totalItems: 0,
         subItems: [
         ]
       }
@@ -31,7 +29,6 @@ const _data = [
       {
         name: 'Gloceries',
         total: 300,
-        totalItems: 46.65,
         subItems: [
           { description: 'Albert heijn 1', value: 12.33 },
           { description: 'Albert heijn 2', value: 34.22 },
@@ -40,7 +37,6 @@ const _data = [
       {
         name: 'Health Ensurance',
         total: 235,
-        totalItems: 135,
         subItems: [
           { description: 'Bru HE', value: 135 },
         ]
@@ -55,7 +51,6 @@ const _data = [
       {
         name: 'Gloceries',
         total: 300,
-        totalItems: 46.65,
         subItems: [
           { description: 'Albert heijn 1', value: 12.33 },
           { description: 'Albert heijn 2', value: 34.22 },
@@ -65,7 +60,6 @@ const _data = [
       {
         name: 'Health Ensurance',
         total: 235,
-        totalItems: 135,
         subItems: [
           { description: 'Bru HE', value: 135 },
         ]
@@ -80,14 +74,12 @@ const _data = [
       {
         name: 'Gloceries',
         total: 300,
-        totalItems: 0,
         subItems: [
         ]
       },
       {
         name: 'Health Ensurance',
         total: 235,
-        totalItems: 0,
         subItems: [
         ]
       }
