@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { memo } from 'react';
+import image from '../../assets/white-loading.png';
 import './styles.scss';
 
 const Login = props => {
@@ -11,6 +12,7 @@ const Login = props => {
     handleBlur,
     handleSubmit,
   } = props;
+
   return (
     <form onSubmit={handleSubmit} className="Login">
       <input
@@ -29,9 +31,14 @@ const Login = props => {
         value={values.password}
       />
       {errors.password && touched.password && <div>{errors.password}</div>}
-      <button type="submit" disabled={isSubmitting}>Submit</button>
+      <button type="submit" disabled={isSubmitting}>
+        {isSubmitting ?
+          <img alt="" src={image} className="Loading" /> :
+          'Submit'
+        }
+      </button>
     </form>
   );
 };
 
-export default Login;
+export default memo(Login);
