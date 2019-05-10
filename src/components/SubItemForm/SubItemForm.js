@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './styles.scss';
 
 class SubItemForm extends Component {
   handleAddNewSubItem = (itemIndex) => {
@@ -22,7 +23,7 @@ class SubItemForm extends Component {
     const { i, handleChange, handleBlur, handleToggle } = this.props;
 
     return (
-      <div>
+      <div className="SubItemForm">
         <div className="AddNewItem__inputs">
           <input
             type="text"

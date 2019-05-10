@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './styles.scss';
 
 class ItemForm extends Component {
   handleAddNewItem = () => {
@@ -24,7 +25,7 @@ class ItemForm extends Component {
     const { handleChange, handleBlur, handleToggle } = this.props;
 
     return (
-      <div>
+      <div className="ItemForm">
         <div className="AddNewMonth__inputs">
           <input
             type="text"
