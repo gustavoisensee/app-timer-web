@@ -1,9 +1,9 @@
 .Card {
-  min-width: 300px;
   padding: 8px;
   border-radius: 3px;
   box-shadow: 0px 4px 10px 0px #ccc;
   margin-bottom: 24px;
+  width: 330px;
 
   &__title {
     display: flex;
@@ -56,6 +56,10 @@
       padding: 8px;
       border-left: 1px solid #ccc;
       border-right: 1px solid #ccc;
+
+      input {
+        margin: 0 !important;
+      }
     }
 
     &__footer {

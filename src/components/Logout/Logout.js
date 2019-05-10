@@ -35,7 +35,7 @@ class Logout extends PureComponent {
     return (
       <div className="Logout">
         <span>{loggedOut ? 'Logged out' : 'Logging out...'}</span>
-        {loggedOut && <button type="button" onClick={this.handleLogout}>Login</button>}
+        {loggedOut && <button type="button" onClick={this.handleLogout}>Go to Login</button>}
       </div>
     );
   }

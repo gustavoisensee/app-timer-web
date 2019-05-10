@@ -36,6 +36,7 @@ class Item extends Component {
                 onBlur={handleBlur}
               />
               <input
+                className='Input__small'
                 value={total}
                 name={`data.${indexMonth}.items.${indexItem}.total`}
                 onChange={handleChange}
@@ -51,9 +52,11 @@ class Item extends Component {
             <button type="button" onClick={this.handleEditClick}>
               {editable ? 'Save' : 'Ed.'}
             </button>
-            <button type="button" onClick={this.handleToggleAddNewSubItem}>
-              &nbsp;&nbsp;+&nbsp;&nbsp;
-            </button>
+            {!editable &&
+              <button type="button" onClick={this.handleToggleAddNewSubItem}>
+                &nbsp;&nbsp;+&nbsp;&nbsp;
+              </button>
+            }
           </div>
         </div>
         {addNewSubItem && (

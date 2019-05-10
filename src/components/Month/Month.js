@@ -41,6 +41,7 @@ class Group extends PureComponent {
                 onBlur={handleBlur}
               />
               <input
+                className='Input__small'
                 value={month.income}
                 name={`data.${indexMonth}.income`}
                 onChange={handleChange}

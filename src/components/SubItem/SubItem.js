@@ -24,6 +24,7 @@ class SubItem extends Component {
                 onBlur={handleBlur}
               />
               <input
+                className='Input__small'
                 value={value}
                 name={`data.${indexMonth}.items.${indexItem}.subItems.${indexSubItem}.value`}
                 onChange={handleChange}
