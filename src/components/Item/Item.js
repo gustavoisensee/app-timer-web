@@ -1,19 +1,42 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import SubItem from '../SubItem';
 import SubItemForm from '../SubItemForm';
 
 class Item extends Component {
+  static propTypes = {
+    handleMonthRefresh: PropTypes.func
+  }
+
   state = {
     editable: false,
     addNewSubItem: false
   }
 
-  handleEditClick = () => {
+  handleEditClick = (e) => {
+    e.stopPropagation();
     this.setState({ editable: !this.state.editable });
+  }
+
+  handleDeleteClick = (e) => {
+    e.stopPropagation();
+    const {
+      values, setValues, indexMonth, indexItem, handleMonthRefresh
+    } = this.props;
+
+    values.data[indexMonth].items.splice(indexItem, 1);
+    setValues(values);
+    this.setState({ editable: false });
+
+    handleMonthRefresh();
   }
 
   handleToggleAddNewSubItem = () => {
     this.setState({ addNewSubItem: !this.state.addNewSubItem });
+  }
+
+  handleRefresh = () => {
+    this.forceUpdate();
   }
 
   render() {
@@ -57,6 +80,7 @@ class Item extends Component {
                 &nbsp;&nbsp;+&nbsp;&nbsp;
               </button>
             }
+            {editable && <button type="button" onClick={this.handleDeleteClick}>Del.</button>}
           </div>
         </div>
         {addNewSubItem && (
@@ -73,6 +97,7 @@ class Item extends Component {
               key={`subitem-${indexItem}-${indexSubItem}`} 
               indexItem={indexItem}
               indexSubItem={indexSubItem}
+              handleItemRefresh={this.handleRefresh}
               {...this.props}
               {...item}
             />

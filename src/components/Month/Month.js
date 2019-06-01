@@ -33,6 +33,10 @@ class Group extends PureComponent {
     setValues(values);
   }
 
+  handleRefresh = () => {
+    this.forceUpdate();
+  }
+
   render() {
     const { indexMonth, month, handleChange, handleBlur } = this.props;
     const { active, editable, addNewItem } = this.state;
@@ -76,8 +80,9 @@ class Group extends PureComponent {
           )}
           {month.items && month.items.map((item, indexItem) => (
             <Item
-              key={`item-${indexItem}`}
+              key={`item-${indexMonth}-${indexItem}`}
               indexItem={indexItem}
+              handleMonthRefresh={this.handleRefresh}
               {...this.props}
               {...item}
             />

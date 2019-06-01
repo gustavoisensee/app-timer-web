@@ -1,6 +1,11 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 class SubItem extends Component {
+  static propTypes = {
+    handleItemRefresh: PropTypes.func
+  }
+
   state = {
     editable: false
   }
