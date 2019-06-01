@@ -53,7 +53,7 @@ class SubItemForm extends Component {
           >Cancel</button>
         </div>
       </div>
-    )
+    );
   }
 }
 

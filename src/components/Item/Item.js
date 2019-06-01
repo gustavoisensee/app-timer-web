@@ -101,7 +101,7 @@ class Item extends Component {
               {...this.props}
               {...item}
             />
-          )
+          );
         })}
         <div className="Card__group__row Card__group__footer">
           <span>Total left:</span>

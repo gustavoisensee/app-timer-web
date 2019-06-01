@@ -45,7 +45,7 @@ class MonthForm extends Component {
             onClick={handleToggle}>Cancel</button>
         </div>
       </div>
-    )
+    );
   }
 }
 
