@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Icon from '../atoms/Icon';
+import IconTypes from '../../constants/iconTypes';
 
 class SubItem extends Component {
   static propTypes = {
@@ -33,6 +35,7 @@ class SubItem extends Component {
   render() {
     const { editable } = this.state;
     const { indexMonth, indexItem, indexSubItem, description, value, handleChange, handleBlur } = this.props;
+    const iconType = (editable ? IconTypes.SAVE : IconTypes.EDIT);
 
     return (
       <div className="Card__group__row">
@@ -57,11 +60,10 @@ class SubItem extends Component {
             <span>{value}</span>
           </Fragment>
         }
-        <div>
-          <button type="button" onClick={this.handleEditClick}>
-            {editable ? 'Save' : 'Ed.'}
-          </button>
-          {editable && <button type="button" onClick={this.handleDeleteClick}>Del.</button>}
+        <div className='row'>
+          <Icon type={iconType} onClick={this.handleEditClick} />
+          {editable &&
+            <Icon type={IconTypes.DELETE} onClick={this.handleDeleteClick} />}
         </div>
       </div>
     );
