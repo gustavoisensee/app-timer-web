@@ -4,6 +4,7 @@ import SubItem from '../SubItem';
 import SubItemForm from '../SubItemForm';
 import Icon from '../atoms/Icon';
 import IconTypes from '../../constants/iconTypes';
+import { euro } from '../../helpers/currency';
 import './styles.scss';
 
 class Item extends Component {
@@ -72,7 +73,7 @@ class Item extends Component {
             </Fragment> :
             <div className='Item__title'>
               <span>{name}</span>
-              <span>{total}</span>
+              <span>{euro(total)}</span>
             </div>
           }
           <div className='row'>
@@ -106,7 +107,7 @@ class Item extends Component {
         })}
         <div className="Card__group__row Card__group__footer">
           <span>Total left:</span>
-          <span>{(total - totalItems)}</span>
+          <span>{euro(total - totalItems)}</span>
         </div>
       </div>
     );

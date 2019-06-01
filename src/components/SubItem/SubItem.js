@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../atoms/Icon';
 import IconTypes from '../../constants/iconTypes';
+import { euro } from '../../helpers/currency';
 import './styles.scss';
 
 class SubItem extends Component {
@@ -58,7 +59,7 @@ class SubItem extends Component {
           </Fragment> :
           <div className='SubItem__title'>
             <span>{description}</span>
-            <span>{value}</span>
+            <span>{euro(value)}</span>
           </div>
         }
         <div className='row'>

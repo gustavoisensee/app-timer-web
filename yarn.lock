@@ -2956,6 +2956,11 @@ cssstyle@^1.0.0, cssstyle@^1.1.1:
   dependencies:
     cssom "0.3.x"
 
+currency.js@^1.2.1:
+  version "1.2.1"
+  resolved "https://npm.staging.nxdev.nl/currency.js/-/currency.js-1.2.1.tgz#18d42ac74d833795051f4a310c83f041013a882f"
+  integrity sha512-7t0jYDZeQYCcaxpgwNOiBz8GaG/qdqTdo+kcTYgCuCNx1p2jLMpJt8h34TJ5INtN9jhryAiLK/atmjwUf13t4A==
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://npm.staging.nxdev.nl/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"

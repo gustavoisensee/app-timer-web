@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "currency.js": "^1.2.1",
     "formik": "^1.5.2",
     "jsonwebtoken": "^8.5.1",
     "node-sass": "^4.11.0",
