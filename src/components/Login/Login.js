@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import image from '../../assets/white-loading.png';
+import image from '../../assets/loading.png';
 import './styles.scss';
 
 const Login = props => {
@@ -14,27 +14,27 @@ const Login = props => {
   } = props;
 
   return (
-    <form onSubmit={handleSubmit} className="Login">
+    <form onSubmit={handleSubmit} className='Login'>
       <input
-        type="email"
+        type='email'
         onChange={handleChange}
         onBlur={handleBlur}
-        name="email"
+        name='email'
         value={values.email}
       />
       {errors.email && touched.email && <div>{errors.email}</div>}
       <input
-        type="password"
+        type='password'
         onChange={handleChange}
         onBlur={handleBlur}
-        name="password"
+        name='password'
         value={values.password}
       />
       {errors.password && touched.password && <div>{errors.password}</div>}
-      <button type="submit" disabled={isSubmitting}>
+      <button type='submit' disabled={isSubmitting}>
         {isSubmitting ?
-          <img alt="" src={image} className="Loading" /> :
-          'Submit'
+          <img alt='' src={image} className='Loading' /> :
+          'Sign in'
         }
       </button>
     </form>

@@ -7,10 +7,11 @@ import './styles.scss';
 
 class Logout extends PureComponent {
   state = {
-    loggedOut: false,
+    seconds: 9
   }
 
   componentDidMount() {
+    const { history } = this.props;
     const user = retrieveData(USER);
     const hasToken = (user && !!user.token);
     const isLogged = (hasToken ? !!jwt.decode(user.token) : null);
@@ -18,10 +19,20 @@ class Logout extends PureComponent {
     if (isLogged) {
       removeData(USER);
     } else {
-      const { history } = this.props;
       history.push(HOME);
     }
-    this.setState({ loggedOut: true });
+
+    this.logoutInterval = setInterval(() => this.setState({
+      seconds: this.state.seconds - 1
+    }), 1000);
+
+    setTimeout(() => {
+      history.push(HOME);
+    }, 9000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.logoutInterval);
   }
 
   handleLogout = () => {
@@ -30,12 +41,13 @@ class Logout extends PureComponent {
   }
 
   render() {
-    const { loggedOut } = this.state;
+    const { seconds } = this.state;
     
     return (
       <div className="Logout">
-        <span>{loggedOut ? 'Logged out' : 'Logging out...'}</span>
-        {loggedOut && <button type="button" onClick={this.handleLogout}>Go to Login</button>}
+        <span>You are logged out!</span>
+        <span>{`You will be redirected to Login page in ${seconds} seconds.`}</span>
+        <button type="button" onClick={this.handleLogout}>Go to Login</button>
       </div>
     );
   }
