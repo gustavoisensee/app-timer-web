@@ -1,9 +1,11 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import Item from '../Item';
 import ItemForm from '../ItemForm';
+import Icon from '../atoms/Icon';
+import IconTypes from '../../constants/iconTypes';
 import './styles.scss';
 
-class Group extends PureComponent {
+class Group extends Component {
   state = {
     active: false,
     editable: false,
@@ -37,29 +39,33 @@ class Group extends PureComponent {
     this.forceUpdate();
   }
 
+  renderInput = (value, name) => {
+    const { indexMonth, handleChange, handleBlur } = this.props;
+
+    return (
+      <input
+        value={value}
+        name={`data.${indexMonth}.${name}`}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        onClick={(e) => e.stopPropagation()}
+      />
+    );
+  }
+
   render() {
-    const { indexMonth, month, handleChange, handleBlur } = this.props;
+    const { indexMonth, month } = this.props;
     const { active, editable, addNewItem } = this.state;
     const cardContainerClass = `Card__container${active ? '-active' : ''}`;
+    const iconType = (editable ? IconTypes.SAVE : IconTypes.EDIT);
 
     return (
       <div key={`month-${indexMonth}`} className="Card">
         <div className="Card__title" onClick={this.handleToggle}>
           {editable ?
             <Fragment>
-              <input
-                value={month.month}
-                name={`data.${indexMonth}.month`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              <input
-                className='Input__small'
-                value={month.income}
-                name={`data.${indexMonth}.income`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              /> 
+              {this.renderInput(month.month, 'month')}
+              {this.renderInput(month.income, 'income')}
             </Fragment> :
             <Fragment>
               <h3>{month.month}</h3>
@@ -67,10 +73,8 @@ class Group extends PureComponent {
             </Fragment>
           }
           <div className="Card__title__buttons">
-            <button type="button" onClick={this.handleEditClick}>
-              {editable ? 'Save' : 'Edit'}
-            </button>
-            {editable && <button type="button" onClick={this.handleDeleteClick}>Del.</button>}
+            {editable && <Icon type={IconTypes.DELETE} onClick={this.handleDeleteClick} />}
+            <Icon type={iconType} onClick={this.handleEditClick} />
           </div>
         </div>
         <div className={cardContainerClass}>
