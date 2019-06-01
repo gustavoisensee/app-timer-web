@@ -24,6 +24,15 @@ class Group extends PureComponent {
     this.setState({ editable: !this.state.editable });
   }
 
+  handleDeleteClick = (e) => {
+    e.stopPropagation();
+    const { values, setValues, indexMonth } = this.props;
+
+    values.data.splice(indexMonth, 1);
+    this.setState({ editable: false });
+    setValues(values);
+  }
+
   render() {
     const { indexMonth, month, handleChange, handleBlur } = this.props;
     const { active, editable, addNewItem } = this.state;
@@ -57,6 +66,7 @@ class Group extends PureComponent {
             <button type="button" onClick={this.handleEditClick}>
               {editable ? 'Save' : 'Edit'}
             </button>
+            {editable && <button type="button" onClick={this.handleDeleteClick}>Del.</button>}
           </div>
         </div>
         <div className={cardContainerClass}>
