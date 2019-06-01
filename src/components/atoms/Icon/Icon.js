@@ -3,16 +3,19 @@ import PropTypes from 'prop-types';
 import { ICON_SIZE } from '../../../constants/styles';
 import IconTypes from '../../../constants/iconTypes';
 import Svgs from './svgs';
+import './styles.scss';
 
-const Icon = ({ type, onClick, ...rest }) => {
+const Icon = ({ type, onClick, style, ...rest }) => {
   const IconSvg = Svgs[type];
   return (
-    <IconSvg
-      width={ICON_SIZE}
-      height={ICON_SIZE}
-      onClick={onClick}
-      {...rest}
-    />
+    <div className='Icon' style={style}>
+      <IconSvg
+        width={ICON_SIZE}
+        height={ICON_SIZE}
+        onClick={onClick}
+        {...rest}
+      />
+    </div>
   );
 };
 

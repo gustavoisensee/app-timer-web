@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import SubItem from '../SubItem';
 import SubItemForm from '../SubItemForm';
+import Icon from '../atoms/Icon';
+import IconTypes from '../../constants/iconTypes';
 
 class Item extends Component {
   static propTypes = {
@@ -45,6 +47,7 @@ class Item extends Component {
       indexMonth, indexItem, name, subItems, total,
       handleChange, handleBlur
     } = this.props;
+    const iconType = (editable ? IconTypes.SAVE : IconTypes.EDIT);
     let totalItems = 0;
 
     return (
@@ -71,16 +74,12 @@ class Item extends Component {
               <span>{total}</span>
             </Fragment>
           }
-          <div>
-            <button type="button" onClick={this.handleEditClick}>
-              {editable ? 'Save' : 'Ed.'}
-            </button>
+          <div className='row'>
+            <Icon type={iconType} onClick={this.handleEditClick} />
             {!editable &&
-              <button type="button" onClick={this.handleToggleAddNewSubItem}>
-                &nbsp;&nbsp;+&nbsp;&nbsp;
-              </button>
-            }
-            {editable && <button type="button" onClick={this.handleDeleteClick}>Del.</button>}
+              <Icon type={IconTypes.ADD} onClick={this.handleToggleAddNewSubItem} style={{ marginLeft: 8 }} />}
+            {editable &&
+              <Icon type={IconTypes.DELETE} onClick={this.handleDeleteClick} />}
           </div>
         </div>
         {addNewSubItem && (

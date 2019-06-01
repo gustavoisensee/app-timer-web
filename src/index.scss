@@ -29,7 +29,7 @@ body,
     padding: 8px;
     margin: 8px;
     background-color: #ffffff;
-    width: calc(100% - 32px);
+    min-width: 50px;
   }
 
   button {
@@ -41,6 +41,11 @@ body,
 
 .Input__small {
   width: 50px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }
 
 .Loading {
