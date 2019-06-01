@@ -58,19 +58,20 @@ class Group extends Component {
     const { active, editable, addNewItem } = this.state;
     const cardContainerClass = `Card__container${active ? '-active' : ''}`;
     const iconType = (editable ? IconTypes.SAVE : IconTypes.EDIT);
+    const monthClass = (active ? 'Month__open' : 'Month');
 
     return (
       <div key={`month-${indexMonth}`} className="Card">
-        <div className="Card__title" onClick={this.handleToggle}>
+        <div className={`Card__title ${monthClass}`} onClick={this.handleToggle}>
           {editable ?
             <Fragment>
               {this.renderInput(month.month, 'month')}
               {this.renderInput(month.income, 'income')}
             </Fragment> :
-            <Fragment>
+            <div className='Month__title'>
               <h3>{month.month}</h3>
               <h3>{month.income}</h3>
-            </Fragment>
+            </div>
           }
           <div className="Card__title__buttons">
             {editable && <Icon type={IconTypes.DELETE} onClick={this.handleDeleteClick} />}

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../atoms/Icon';
 import IconTypes from '../../constants/iconTypes';
+import './styles.scss';
 
 class SubItem extends Component {
   static propTypes = {
@@ -55,15 +56,14 @@ class SubItem extends Component {
               onBlur={handleBlur}
             />
           </Fragment> :
-          <Fragment>
+          <div className='SubItem__title'>
             <span>{description}</span>
             <span>{value}</span>
-          </Fragment>
+          </div>
         }
         <div className='row'>
+          {editable && <Icon type={IconTypes.DELETE} onClick={this.handleDeleteClick} />}
           <Icon type={iconType} onClick={this.handleEditClick} />
-          {editable &&
-            <Icon type={IconTypes.DELETE} onClick={this.handleDeleteClick} />}
         </div>
       </div>
     );

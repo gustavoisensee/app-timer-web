@@ -4,6 +4,7 @@ import SubItem from '../SubItem';
 import SubItemForm from '../SubItemForm';
 import Icon from '../atoms/Icon';
 import IconTypes from '../../constants/iconTypes';
+import './styles.scss';
 
 class Item extends Component {
   static propTypes = {
@@ -69,17 +70,17 @@ class Item extends Component {
                 onBlur={handleBlur}
               />
             </Fragment> :
-            <Fragment>
+            <div className='Item__title'>
               <span>{name}</span>
               <span>{total}</span>
-            </Fragment>
+            </div>
           }
           <div className='row'>
-            <Icon type={iconType} onClick={this.handleEditClick} />
             {!editable &&
-              <Icon type={IconTypes.ADD} onClick={this.handleToggleAddNewSubItem} style={{ marginLeft: 8 }} />}
+              <Icon type={IconTypes.ADD} onClick={this.handleToggleAddNewSubItem} style={{ marginRight: 8 }} />}
             {editable &&
               <Icon type={IconTypes.DELETE} onClick={this.handleDeleteClick} />}
+            <Icon type={iconType} onClick={this.handleEditClick} />
           </div>
         </div>
         {addNewSubItem && (

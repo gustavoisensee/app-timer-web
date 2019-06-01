@@ -68,3 +68,19 @@
   
   }
 }
+
+.Month {
+  margin: 0 8px;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 8px;
+  }
+
+  &__open {
+    border-bottom: 1px solid #e8e8e8;
+    margin: 0 8px 8px 8px;
+  }
+}
