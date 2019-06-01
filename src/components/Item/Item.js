@@ -94,7 +94,8 @@ class Item extends Component {
           totalItems += item.value;
           return (
             <SubItem
-              key={`subitem-${indexItem}-${indexSubItem}`} 
+              key={`subitem-${indexMonth}-${indexItem}-${indexSubItem}`} 
+              indexMonth={indexMonth}
               indexItem={indexItem}
               indexSubItem={indexSubItem}
               handleItemRefresh={this.handleRefresh}
