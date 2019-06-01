@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
-import Select from 'react-select';
 import Month from '../Month';
 import MonthForm from '../MonthForm';
 import './styles.scss';
 
 const EMPTY_ARRAY = [];
-
 
 const _options = [
   { value: 2019, label: '2019' },
@@ -14,13 +12,12 @@ const _options = [
 
 class Dashboard extends PureComponent {
   state = {
-    // data: this.props.values.data,
     year: new Date().getFullYear(),
     addNewMonth: false,
   }
 
   handleYearChange = (e) => {
-    this.setState({ year: e.value });
+    this.setState({ year: e.target.value });
   }
 
   handleToggleAddNewMonth = () => {
@@ -48,11 +45,15 @@ class Dashboard extends PureComponent {
       <div className="Dashboard">
         <h2>Dashboard</h2>
         <div className="Dashboard__filter">
-          <Select
-            options={_options}
-            defaultValue={_options[0]}
+          <select
+            className='Select'
             onChange={this.handleYearChange}
-          />
+            value={year}
+          >
+            {_options.map(({ value, label }) => (
+              <option key={value} value={value}>{label}</option>  
+            ))}
+          </select>
         </div>
         <div className="Dashboard__add-button">
           <button type="button" onClick={this.handleToggleAddNewMonth}>Add month</button>
