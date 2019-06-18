@@ -28,6 +28,7 @@ class Dashboard extends PureComponent {
     const {
       handleChange,
       handleBlur,
+      handleSubmit,
       values,
       setValues
     } = this.props;
@@ -42,38 +43,41 @@ class Dashboard extends PureComponent {
     };
 
     return (
-      <div className="Dashboard">
-        <h2>Dashboard</h2>
-        <div className="Dashboard__filter">
-          <select
-            className='Select'
-            onChange={this.handleYearChange}
-            value={year}
-          >
-            {_options.map(({ value, label }) => (
-              <option key={value} value={value}>{label}</option>  
-            ))}
-          </select>
+      <form onSubmit={handleSubmit}>
+        <div className="Dashboard">
+          <h2>Dashboard</h2>
+          <div className="Dashboard__filter">
+            <select
+              className='Select'
+              onChange={this.handleYearChange}
+              value={year}
+            >
+              {_options.map(({ value, label }) => (
+                <option key={value} value={value}>{label}</option>  
+              ))}
+            </select>
+          </div>
+          <div className="Dashboard__add-button">
+            <button type="button" onClick={this.handleToggleAddNewMonth}>Add month</button>
+            <button type="submit" className="btn-secondary">Save</button>
+          </div>
+          {addNewMonth && (
+            <MonthForm
+              handleToggle={this.handleToggleAddNewMonth}
+              {...basic}
+            />
+          )}
+          {filteredData.map((month, indexMonth) => (
+            <Month
+              key={`month-${indexMonth}`}
+              indexMonth={indexMonth}
+              month={month}
+              {...basic}
+              {...this.props}
+            />
+          ))}
         </div>
-        <div className="Dashboard__add-button">
-          <button type="button" onClick={this.handleToggleAddNewMonth}>Add month</button>
-        </div>
-        {addNewMonth && (
-          <MonthForm
-            handleToggle={this.handleToggleAddNewMonth}
-            {...basic}
-          />
-        )}
-        {filteredData.map((month, indexMonth) => (
-          <Month
-            key={`month-${indexMonth}`}
-            indexMonth={indexMonth}
-            month={month}
-            {...basic}
-            {...this.props}
-          />
-        ))}
-      </div>
+      </form>
     );
   }
 };
