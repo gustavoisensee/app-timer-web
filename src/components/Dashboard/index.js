@@ -1,5 +1,7 @@
 import { withFormik } from 'formik';
 import Dashboard from './Dashboard';
+import { saveMonths } from '../../services/month';
+
 
 const EnhancedForm = withFormik({
   mapPropsToValues: () => ({
@@ -7,10 +9,8 @@ const EnhancedForm = withFormik({
   }),
 
   handleSubmit: (values, { setSubmitting }) => {
-    console.log('values: ', values);
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 1000);
+    saveMonths(values);
+    setSubmitting(false);
   },
 
   displayName: 'BasicForm',

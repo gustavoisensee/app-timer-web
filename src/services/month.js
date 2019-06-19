@@ -9,10 +9,10 @@ export const getMonths = async() => {
   return get({ path, auth: true, token });
 };
 
-export const create = async({ data }) => {
-  const user = await retrieveData(USER);
+export const saveMonths = async({ data }) => {
+  const { token, user } = await retrieveData(USER);
   const path = `month/user/${user.id}`;
   const params = { data };
 
-  return post({ path, params });
+  return post({ path, params, auth: true, token });
 };
