@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Month from '../Month';
 import MonthForm from '../MonthForm';
 import './styles.scss';
+import { getMonths } from '../../services/month';
 
 const EMPTY_ARRAY = [];
 
@@ -22,6 +23,13 @@ class Dashboard extends PureComponent {
 
   handleToggleAddNewMonth = () => {
     this.setState({ addNewMonth: !this.state.addNewMonth });
+  }
+
+  async componentDidMount() {
+    const { setValues } = this.props;
+    const promiseMonths = await getMonths();
+    const data = await promiseMonths.json();
+    setValues({ data });
   }
 
   render() {

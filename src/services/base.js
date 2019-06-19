@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+
 const apiUrl = (
   process.env.PATH_API || 'https://my-finances-api.herokuapp.com/'
 );
@@ -11,17 +13,28 @@ const defaultOptions = {
   }
 };
 
-export const post = (path, params, pOptions = {}) => {
-  const options = {
-    method: 'POST',
-    ...defaultOptions,
-    ...pOptions,
+const createAuthenticatedHeaders = (token) => ({
+  headers: {
+    ...defaultOptions.headers,
+    'Authorization': `Bearer ${token}`
+  }
+});
+
+const request = (method, { path, params, auth = false, token }) => {
+  const options = (auth ? createAuthenticatedHeaders(token) : defaultOptions);
+  const _options = {
+    method,
+    ...options,
     body: JSON.stringify(params)
   };
   
   return fetch(
     createUrl(path),
-    options
+    _options
   );
 };
+
+export const post = (props) => request('POST', props);
+
+export const get = (props) => request('GET', props);
 
