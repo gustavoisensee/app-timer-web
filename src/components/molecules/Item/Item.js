@@ -29,7 +29,7 @@ class Item extends Component {
     } = this.props;
 
     values.data[indexMonth].items.splice(indexItem, 1);
-    setValues(values);
+    setValues({ ...values });
     this.setState({ editable: false });
 
     handleMonthRefresh();

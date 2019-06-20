@@ -28,7 +28,7 @@ class SubItem extends Component {
       .items[indexItem]
       .subItems.splice(indexSubItem, 1);
 
-    setValues(values);
+    setValues({ ...values });
     this.setState({ editable: false });
 
     handleItemRefresh();

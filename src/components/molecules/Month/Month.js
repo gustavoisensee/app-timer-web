@@ -33,7 +33,7 @@ class Group extends Component {
 
     values.data.splice(indexMonth, 1);
     this.setState({ editable: false });
-    setValues(values);
+    setValues({ ...values });
   }
 
   handleRefresh = () => {
