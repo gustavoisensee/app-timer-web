@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import Month from '../Month';
-import MonthForm from '../MonthForm';
+import Month from '../../molecules/Month';
+import MonthForm from '../../molecules/MonthForm';
+import { getMonths } from '../../../services/month';
 import './styles.scss';
-import { getMonths } from '../../services/month';
 
 const EMPTY_ARRAY = [];
 

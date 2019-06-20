@@ -1,9 +1,9 @@
 import { withFormik } from 'formik';
 import queryString from 'query-string';
 import ResetPassword from './ResetPassword';
-import { resetPassword } from '../../services/account';
-import { CLIENT_ERROR } from '../../constants/httpStatus';
-import { SUCCESS, ERROR } from '../../constants/status';
+import { resetPassword } from '../../../services/account';
+import { CLIENT_ERROR } from '../../../constants/httpStatus';
+import { SUCCESS, ERROR } from '../../../constants/status';
 
 const errorMessage = 'Token is invalid or expired!';
 

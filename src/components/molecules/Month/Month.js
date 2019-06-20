@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
-
 import Item from '../Item';
 import ItemForm from '../ItemForm';
-import Icon from '../atoms/Icon';
-import IconTypes from '../../constants/iconTypes';
-import { euro } from '../../helpers/currency';
+import Icon from '../../atoms/Icon';
+import IconTypes from '../../../constants/iconTypes';
+import { euro } from '../../../helpers/currency';
 import './styles.scss';
 
 class Group extends Component {

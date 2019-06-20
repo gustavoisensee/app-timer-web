@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../atoms/Icon';
-import IconTypes from '../../constants/iconTypes';
-import { euro } from '../../helpers/currency';
+import Icon from '../../atoms/Icon';
+import IconTypes from '../../../constants/iconTypes';
+import { euro } from '../../../helpers/currency';
 import './styles.scss';
 
 class SubItem extends Component {

@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import jwt from 'jsonwebtoken';
-import { retrieveData, removeData } from '../../services/storage';
-import { USER } from '../../constants/storageKeys';
-import { HOME } from '../../constants/routes';
+import { retrieveData, removeData } from '../../../services/storage';
+import { USER } from '../../../constants/storageKeys';
+import { HOME } from '../../../constants/routes';
 import './styles.scss';
 
 class Logout extends PureComponent {

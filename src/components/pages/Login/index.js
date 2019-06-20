@@ -1,8 +1,8 @@
 import { withFormik } from 'formik';
-import { login } from '../../services/account';
-import { storeData } from '../../services/storage';
+import { login } from '../../../services/account';
+import { storeData } from '../../../services/storage';
+import { USER } from '../../../constants/storageKeys';
 import Login from './Login';
-import { USER } from '../../constants/storageKeys';
 
 const EnhancedForm = withFormik({
   mapPropsToValues: () => ({

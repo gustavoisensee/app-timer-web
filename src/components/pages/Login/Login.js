@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import image from '../../assets/loading.png';
+import image from '../../../assets/loading.png';
 import './styles.scss';
 
 const Login = props => {
