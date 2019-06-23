@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Month from '../../molecules/Month';
 import MonthForm from '../../molecules/MonthForm';
 import { getMonths } from '../../../services/month';
+import NavBar from '../../atoms/NavBar';
 import './styles.scss';
 
 const EMPTY_ARRAY = [];
@@ -15,6 +16,7 @@ class Dashboard extends PureComponent {
   state = {
     year: new Date().getFullYear(),
     addNewMonth: false,
+    user: null
   }
 
   handleYearChange = (e) => {
@@ -38,7 +40,8 @@ class Dashboard extends PureComponent {
       handleBlur,
       handleSubmit,
       values,
-      setValues
+      setValues,
+      user
     } = this.props;
     const { year, addNewMonth } = this.state;
     const { data } = values;
@@ -51,41 +54,44 @@ class Dashboard extends PureComponent {
     };
 
     return (
-      <form onSubmit={handleSubmit}>
-        <div className="Dashboard">
-          <h2>Dashboard</h2>
-          <div className="Dashboard__filter">
-            <select
-              className='Select'
-              onChange={this.handleYearChange}
-              value={year}
-            >
-              {_options.map(({ value, label }) => (
-                <option key={value} value={value}>{label}</option>  
-              ))}
-            </select>
+      <div>
+        <NavBar user={user} />
+        <form onSubmit={handleSubmit}>
+          <div className="Dashboard">
+            <h2>Dashboard</h2>
+            <div className="Dashboard__filter">
+              <select
+                className='Select'
+                onChange={this.handleYearChange}
+                value={year}
+              >
+                {_options.map(({ value, label }) => (
+                  <option key={value} value={value}>{label}</option>  
+                ))}
+              </select>
+            </div>
+            <div className="Dashboard__add-button">
+              <button type="button" onClick={this.handleToggleAddNewMonth}>Add month</button>
+              <button type="submit" className="btn-secondary">Save</button>
+            </div>
+            {addNewMonth && (
+              <MonthForm
+                handleToggle={this.handleToggleAddNewMonth}
+                {...basic}
+              />
+            )}
+            {filteredData.map((month, indexMonth) => (
+              <Month
+                key={`month-${indexMonth}`}
+                indexMonth={indexMonth}
+                month={month}
+                {...basic}
+                {...this.props}
+              />
+            ))}
           </div>
-          <div className="Dashboard__add-button">
-            <button type="button" onClick={this.handleToggleAddNewMonth}>Add month</button>
-            <button type="submit" className="btn-secondary">Save</button>
-          </div>
-          {addNewMonth && (
-            <MonthForm
-              handleToggle={this.handleToggleAddNewMonth}
-              {...basic}
-            />
-          )}
-          {filteredData.map((month, indexMonth) => (
-            <Month
-              key={`month-${indexMonth}`}
-              indexMonth={indexMonth}
-              month={month}
-              {...basic}
-              {...this.props}
-            />
-          ))}
-        </div>
-      </form>
+        </form>
+      </div>
     );
   }
 };

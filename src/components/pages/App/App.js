@@ -4,7 +4,6 @@ import { retrieveData } from '../../../services/storage';
 import { USER } from '../../../constants/storageKeys';
 import Login from '../Login';
 import Dashboard from '../Dashboard';
-import NavBar from '../../atoms/NavBar';
 import './styles.scss';
 
 class App extends PureComponent {
@@ -24,9 +23,8 @@ class App extends PureComponent {
     const { isLogged, user } = this.state;
     return (
       <div className="App">
-        <NavBar user={user} />
         {isLogged ?
-          (<Dashboard />) :
+          (<Dashboard user={user} />) :
           (<Login {...this.props} />)}
       </div>
     );

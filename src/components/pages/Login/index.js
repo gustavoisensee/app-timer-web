@@ -6,8 +6,8 @@ import Login from './Login';
 
 const EnhancedForm = withFormik({
   mapPropsToValues: () => ({
-    email: 'gustavo.isensee@gmail.com',
-    password: '112'
+    email: '',
+    password: ''
   }),
 
   validate: values => {
@@ -17,7 +17,7 @@ const EnhancedForm = withFormik({
       errors.email = 'Required';
     }
     if (!values.password) {
-      errors.passwprd = 'Required';
+      errors.password = 'Required';
     }
 
     return errors;

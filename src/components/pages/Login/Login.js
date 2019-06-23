@@ -15,22 +15,27 @@ const Login = props => {
 
   return (
     <form onSubmit={handleSubmit} className='Login'>
+      <h1>Login</h1>
+      <span>E-mail</span>
       <input
         type='email'
         onChange={handleChange}
         onBlur={handleBlur}
         name='email'
         value={values.email}
+        placeholder='email@email.com'
       />
-      {errors.email && touched.email && <div>{errors.email}</div>}
+      {errors.email && touched.email && <div className='required'>{errors.email}</div>}
+      <span>Password</span>
       <input
         type='password'
         onChange={handleChange}
         onBlur={handleBlur}
         name='password'
         value={values.password}
+        placeholder='******'
       />
-      {errors.password && touched.password && <div>{errors.password}</div>}
+      {errors.password && touched.password && <div className='required'>{errors.password}</div>}
       <button type='submit' disabled={isSubmitting}>
         {isSubmitting ?
           <img alt='' src={image} className='Loading' /> :
