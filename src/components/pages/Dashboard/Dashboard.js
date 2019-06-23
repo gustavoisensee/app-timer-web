@@ -3,6 +3,7 @@ import Month from '../../molecules/Month';
 import MonthForm from '../../molecules/MonthForm';
 import { getMonths } from '../../../services/month';
 import NavBar from '../../atoms/NavBar';
+import image from '../../../assets/loading-black.png';
 import './styles.scss';
 
 const EMPTY_ARRAY = [];
@@ -36,6 +37,7 @@ class Dashboard extends PureComponent {
 
   render() {
     const {
+      isSubmitting,
       handleChange,
       handleBlur,
       handleSubmit,
@@ -72,7 +74,12 @@ class Dashboard extends PureComponent {
             </div>
             <div className="Dashboard__add-button">
               <button type="button" onClick={this.handleToggleAddNewMonth}>Add month</button>
-              <button type="submit" className="btn-secondary">Save</button>
+              <button type="submit" className="btn-secondary">
+                {isSubmitting ?
+                  <img alt='' src={image} className='Loading' style={{ width: 14, height: 14 }} /> :
+                  'Save'
+                }
+              </button>
             </div>
             {addNewMonth && (
               <MonthForm

@@ -9,8 +9,12 @@ const EnhancedForm = withFormik({
   }),
 
   handleSubmit: (values, { setSubmitting }) => {
-    saveMonths(values);
-    setSubmitting(false);
+    saveMonths(values)
+      .then(() => setSubmitting(false))
+      .catch(() => {
+        // TODO add an error message to UI
+        setSubmitting(false);
+      });
   },
 
   displayName: 'BasicForm',
