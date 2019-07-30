@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@sentry/browser": "^5.5.0",
     "currency.js": "^1.2.2",
     "formik": "^1.5.7",
     "jsonwebtoken": "^8.5.1",
@@ -28,5 +29,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {}
 }
