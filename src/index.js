@@ -14,5 +14,3 @@ serviceWorker.unregister();
 
 // Initialize its own setups
 initSentry();
-
-test();
