@@ -1,0 +1,86 @@
+.Card {
+  padding: 8px;
+  border-radius: 3px;
+  box-shadow: 0px 4px 10px 0px #ccc;
+  margin-bottom: 24px;
+  width: 330px;
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &__buttons {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease-out;
+  }
+
+  &__container-active {
+    opacity: 1;
+    height: auto;
+    transition: all 0.4s ease-out;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% - 16px);
+    border-radius: 3px;
+    margin: 8px;
+
+    &__title {
+      font-weight: bold;
+      background-color: #ccc;
+      border-radius: 3px 3px 0 0;
+    }
+
+    &__row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: calc(100% - 16px);
+      padding: 8px;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+
+      input {
+        margin: 0 !important;
+      }
+    }
+
+    &__footer {
+      border: 1px solid #ccc;
+      border-radius: 0 0 3px 3px;
+    }
+  
+  }
+}
+
+.Month {
+  margin: 0 8px;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 8px;
+  }
+
+  &__open {
+    border-bottom: 1px solid #e8e8e8;
+    margin: 0 8px 8px 8px;
+  }
+}

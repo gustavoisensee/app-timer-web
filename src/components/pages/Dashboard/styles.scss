@@ -1,0 +1,35 @@
+.Dashboard {
+  margin-top: 90px;
+
+  &__filter {
+    margin-bottom: 16px;
+  }
+
+  &__add-button {
+    button {
+      margin: 0 16px 16px 0 !important;
+    }
+  }
+}
+
+.AddNewMonth {
+  background-color: black;
+  border-radius: 3px;
+  margin-bottom: 16px;
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__button {
+    background-color: white !important;
+    color: black !important;
+  }
+}
+
+.AddNewItem {
+  &__inputs {
+    display: flex;
+  }
+}

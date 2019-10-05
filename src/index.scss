@@ -9,9 +9,76 @@ body,
   height: 100%;
   width: 100%;
   font-family: 'Roboto', sans-serif;
+  font-size: 14px;
 
   input,
   button {
+    font-size: 14px;
     outline: none;
+    height: 40px;
+    font-size: 14px;
+    background-color: #111;
+    border: 0;
+    border-radius: 3px;
   }
+
+  input {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    height: 24px;
+    padding: 8px;
+    margin: 8px;
+    background-color: #ffffff;
+    min-width: 50px;
+  }
+
+  button {
+    color: #fff;
+    margin: 8px;
+    cursor: pointer;
+  }
+}
+
+.Input__small {
+  width: 50px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.Loading {
+  width: 24px;
+  height: 24px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.Select {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+  -webkit-appearance: none;
+  padding: 8px;
+  border-radius: 3px;
+  max-width: 400px;
+}
+
+.btn-secondary {
+  background-color: #fff !important;
+  color: #111 !important;
+  border: 1px solid #111 !important;
+}
+
+.required {
+  margin-top: -6px;
+  padding: 0px 0 8px 8px;
+  color: red;
 }

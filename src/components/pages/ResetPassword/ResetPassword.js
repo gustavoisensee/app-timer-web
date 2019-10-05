@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { ERROR, SUCCESS } from '../../constants/status';
-import './ResetPassword.scss';
+import { ERROR, SUCCESS } from '../../../constants/status';
+import './styles.scss';
 
 class ResetPassword extends PureComponent {
   render() {

@@ -1,0 +1,8 @@
+.Item {
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 8px;
+  }
+}
