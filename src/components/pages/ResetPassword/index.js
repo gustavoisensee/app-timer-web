@@ -1,5 +1,5 @@
 import { withFormik } from 'formik';
-import queryString from 'query-string';
+import querystring from 'querystring';
 import ResetPassword from './ResetPassword';
 import { resetPassword } from '../../../services/account';
 import { CLIENT_ERROR } from '../../../constants/httpStatus';
@@ -26,7 +26,7 @@ const EnhancedForm = withFormik({
 
   handleSubmit: (values, { props, resetForm, setErrors, setStatus, setSubmitting }) => {
     try {
-      const { token } = queryString.parse(props.location.search);
+      const { token } = querystring.parse(props.location.search);
 
       if (token) {
         resetPassword({ ...values, token })

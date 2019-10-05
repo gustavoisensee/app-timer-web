@@ -1,5 +1,3 @@
-import 'whatwg-fetch';
-
 const apiUrl = (
   process.env.REACT_APP_PATH_API || 'https://my-finances-api.netlify.com/.netlify/functions/api/'
 );
