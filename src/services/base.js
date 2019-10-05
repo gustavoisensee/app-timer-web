@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 
 const apiUrl = (
-  process.env.PATH_API || 'https://my-finances-api.herokuapp.com/'
+  process.env.REACT_APP_PATH_API || 'https://my-finances-api.netlify.com/.netlify/functions/api/'
 );
 
 const createUrl = (path) => `${apiUrl}${path}`;
@@ -27,7 +27,7 @@ const request = (method, { path, params, auth = false, token }) => {
     ...options,
     body: JSON.stringify(params)
   };
-  
+
   return fetch(
     createUrl(path),
     _options
