@@ -1,3 +1,3 @@
 [[redirects]]
-  from = "https://my-finances-web.netlify.app/.netlify/functions/api/"
+  from = "https://my-finances-web.netlify.app/.netlify/functions/api/*"
   to = "https://my-finances-api.netlify.app/.netlify/functions/api/"
