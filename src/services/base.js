@@ -1,5 +1,7 @@
 const apiUrl = (
-  process.env.REACT_APP_PATH_API || 'https://my-finances-api.netlify.com/.netlify/functions/api/'
+  // Test
+  // process.env.REACT_APP_PATH_API || 'https://my-finances-api.netlify.com/.netlify/functions/api/'
+  process.env.REACT_APP_PATH_API || '/.netlify/functions/api/'
 );
 
 const createUrl = (path) => `${apiUrl}${path}`;
