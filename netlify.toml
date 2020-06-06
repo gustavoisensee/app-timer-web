@@ -1,3 +1,6 @@
 [[redirects]]
   from = "https://my-finances-web.netlify.app/.netlify/functions/api/*"
   to = "https://my-finances-api.netlify.app/.netlify/functions/api/"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
