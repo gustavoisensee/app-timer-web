@@ -3,4 +3,4 @@
   to = "https://my-finances-api.netlify.app/.netlify/functions/api/:splat"
   # status = 200
   # force = true
-  # headers = {X-From = "Netlify"}
+  headers = { X-From = "Netlify", Access-Control-Allow-Origin = "*" }
