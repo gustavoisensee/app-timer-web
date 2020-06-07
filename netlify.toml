@@ -4,3 +4,8 @@
   status = 200
   force = true
   headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/test"
+  to = "https://isensee.nl"
+  status = 200
