@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "/.netlify/functions/api/*"
-  to = "https://my-finances-api.netlify.app/.netlify/functions/api/"
+  from = "/api/*"
+  to = "https://my-finances-api.netlify.app/.netlify/functions/api/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
