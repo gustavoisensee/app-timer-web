@@ -16,7 +16,8 @@ const defaultOptions = {
 const createAuthenticatedHeaders = (token) => ({
   headers: {
     ...defaultOptions.headers,
-    'Authorization': `Bearer ${token}`
+    'Authorization': `Bearer ${token}`,
+    'Access-Control-Allow-Origin': '*'
   }
 });
 
