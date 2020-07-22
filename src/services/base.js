@@ -1,14 +1,15 @@
 import 'whatwg-fetch';
 
 const apiUrl = (
-  process.env.PATH_API || 'https://my-finances-api.herokuapp.com/'
+  process.env.REACT_APP_PATH_API || 'https://my-finances-api-v1.herokuapp.com/'
 );
 
 const createUrl = (path) => `${apiUrl}${path}`;
 
 const defaultOptions = {
   headers: {
-    Accept: 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    Accept: '*/*',
     'Content-Type': 'application/json',
   }
 };
@@ -27,7 +28,7 @@ const request = (method, { path, params, auth = false, token }) => {
     ...options,
     body: JSON.stringify(params)
   };
-  
+
   return fetch(
     createUrl(path),
     _options
