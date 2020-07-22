@@ -9,10 +9,13 @@ export const resetPassword = ({ password, token }) => {
 
 export const login = ({ email, password }) => {
   const path = 'account/login';
+  const headers = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  };
   const params = {
     email,
     password
   };
 
-  return post({ path, params });
+  return post({ path, params, headers });
 };

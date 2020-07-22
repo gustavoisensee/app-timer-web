@@ -6,26 +6,25 @@ const apiUrl = (
 
 const createUrl = (path) => `${apiUrl}${path}`;
 
-const defaultOptions = {
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    Accept: '*/*',
-    'Content-Type': 'application/json',
-  }
-};
-
-const createAuthenticatedHeaders = (token) => ({
-  headers: {
-    ...defaultOptions.headers,
-    'Authorization': `Bearer ${token}`
-  }
+const defaultHeaders = ({
+  Accept: '*/*',
+  'Access-Control-Allow-Origin': '*',
+  'Content-Type': 'application/json',
 });
 
-const request = (method, { path, params, auth = false, token }) => {
-  const options = (auth ? createAuthenticatedHeaders(token) : defaultOptions);
+const createAuthenticatedHeaders = (token) => ({
+  ...defaultHeaders,
+  'Authorization': `Bearer ${token}`
+});
+
+const request = (method, { path, params, auth = false, token, headers }) => {
+  const _headers = (auth ? createAuthenticatedHeaders(token) : defaultHeaders);
   const _options = {
     method,
-    ...options,
+    headers: {
+      ..._headers,
+      ...headers
+    },
     body: JSON.stringify(params)
   };
 
