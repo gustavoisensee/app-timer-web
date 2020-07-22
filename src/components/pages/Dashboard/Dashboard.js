@@ -9,6 +9,7 @@ import './styles.scss';
 const EMPTY_ARRAY = [];
 
 const _options = [
+  { value: 2020, label: '2020' },
   { value: 2019, label: '2019' },
   { value: 2018, label: '2018' },
 ];
@@ -52,7 +53,8 @@ class Dashboard extends PureComponent {
       handleChange,
       handleBlur,
       values,
-      setValues
+      setValues,
+      year
     };
 
     return (
@@ -68,7 +70,7 @@ class Dashboard extends PureComponent {
                 value={year}
               >
                 {_options.map(({ value, label }) => (
-                  <option key={value} value={value}>{label}</option>  
+                  <option key={value} value={value}>{label}</option>
                 ))}
               </select>
             </div>

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 class MonthForm extends Component {
   handleAddNewMonth = () => {
-    const { setValues, values, handleToggle } = this.props;
+    const { setValues, values, handleToggle, year } = this.props;
     const item = {
-      year: 2019,
+      year,
       month: values.month,
       income: values.income,
       items: []

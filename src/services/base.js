@@ -1,10 +1,11 @@
 import 'whatwg-fetch';
 
-const apiUrl = (
-  process.env.REACT_APP_PATH_API || 'https://my-finances-api-v1.herokuapp.com/'
-);
+// const apiUrl = (
+//   process.env.REACT_APP_PATH_API || 'https://my-finances-api-v1.herokuapp.com/'
+// );
 
-const createUrl = (path) => `${apiUrl}${path}`;
+// const createUrl = (path) => `${apiUrl}${path}`;
+const createUrl = (path) => `${path}`;
 
 const defaultHeaders = ({
   Accept: '*/*',
