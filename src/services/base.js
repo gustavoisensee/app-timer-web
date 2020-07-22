@@ -1,9 +1,8 @@
 import 'whatwg-fetch';
 
-// const apiUrl = (
-//   process.env.REACT_APP_PATH_API || 'https://my-finances-api-v1.herokuapp.com/'
-// );
-const apiUrl = '/api/';
+const apiUrl = (
+  process.env.REACT_APP_PATH_API || 'https://my-finances-api-v1.herokuapp.com/'
+);
 
 const createUrl = (path) => `${apiUrl}${path}`;
 
