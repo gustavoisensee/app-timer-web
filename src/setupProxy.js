@@ -5,7 +5,7 @@ module.exports = function(app) {
     proxy('/.netlify/functions/', {
       target: 'https://my-finances-web.netlify.app/',
       pathRewrite: {
-        '^/\\.netlify/functions/': '',
+        '^/\\.netlify/functions': '',
       },
     }),
   );
