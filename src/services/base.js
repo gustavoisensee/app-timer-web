@@ -9,7 +9,7 @@ const createUrl = (path) => `${apiUrl}${path}`;
 
 const defaultHeaders = ({
   Accept: '*/*',
-  'Access-Control-Allow-Origin': 'https://my-finances-web.netlify.app',
+  'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
 });
 
