@@ -3,7 +3,7 @@ import 'whatwg-fetch';
 // const apiUrl = (
 //   process.env.REACT_APP_PATH_API || 'https://my-finances-api-v1.herokuapp.com/'
 // );
-const apiUrl = '/.netlify/functions';
+const apiUrl = '/.netlify/functions/api/';
 
 const createUrl = (path) => `${apiUrl}${path}`;
 
