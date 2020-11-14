@@ -48,7 +48,11 @@ class Dashboard extends PureComponent {
     } = this.props;
     const { year, addNewMonth } = this.state;
     const { data } = values;
-    const filteredData = (data && data.length && data.filter(d => d.year === Number(year))) || EMPTY_ARRAY;
+
+    const filteredData = (data && data.length &&
+      data.filter(d => d.year === Number(year) && !d.deleted)
+    ) || EMPTY_ARRAY;
+
     const basic = {
       handleChange,
       handleBlur,

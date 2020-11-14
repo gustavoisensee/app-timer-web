@@ -31,7 +31,7 @@ class Group extends Component {
     e.stopPropagation();
     const { values, setValues, indexMonth } = this.props;
 
-    values.data.splice(indexMonth, 1);
+    values.data[indexMonth].deleted = true;
     this.setState({ editable: false });
     setValues({ ...values });
   }
