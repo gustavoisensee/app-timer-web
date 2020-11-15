@@ -1,28 +1,28 @@
 const apiUrl = (
-  process.env.REACT_APP_PATH_API || 'https://my-finances-api.netlify.com/.netlify/functions/api/'
+  process.env.REACT_APP_PATH_API || 'https://my-finances-api-v1.herokuapp.com/'
 );
 
 const createUrl = (path) => `${apiUrl}${path}`;
 
-const defaultOptions = {
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  }
-};
-
-const createAuthenticatedHeaders = (token) => ({
-  headers: {
-    ...defaultOptions.headers,
-    'Authorization': `Bearer ${token}`
-  }
+const defaultHeaders = ({
+  Accept: '*/*',
+  'Access-Control-Allow-Origin': '*',
+  'Content-Type': 'application/json',
 });
 
-const request = (method, { path, params, auth = false, token }) => {
-  const options = (auth ? createAuthenticatedHeaders(token) : defaultOptions);
+const createAuthenticatedHeaders = (token) => ({
+  ...defaultHeaders,
+  'Authorization': `Bearer ${token}`
+});
+
+const request = (method, { path, params, auth = false, token, headers }) => {
+  const _headers = (auth ? createAuthenticatedHeaders(token) : defaultHeaders);
   const _options = {
     method,
-    ...options,
+    headers: {
+      ..._headers,
+      ...headers
+    },
     body: JSON.stringify(params)
   };
 

@@ -9,6 +9,7 @@ const EnhancedForm = withFormik({
   }),
 
   handleSubmit: (values, { setSubmitting }) => {
+    console.log(values)
     saveMonths(values)
       .then(() => setSubmitting(false))
       .catch(() => {
