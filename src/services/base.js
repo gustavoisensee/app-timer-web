@@ -5,6 +5,8 @@ const apiUrl = (
 const createUrl = (path) => `${apiUrl}${path}`;
 
 const defaultHeaders = ({
+  mode: 'cors',
+  credentials: 'include',
   'Content-Type': 'application/json'
 });
 
