@@ -5,9 +5,7 @@ const apiUrl = (
 const createUrl = (path) => `${apiUrl}${path}`;
 
 const defaultHeaders = ({
-  Accept: '*/*',
-  'Access-Control-Allow-Origin': '*',
-  'Content-Type': 'application/json',
+  'Content-Type': 'application/json'
 });
 
 const createAuthenticatedHeaders = (token) => ({
