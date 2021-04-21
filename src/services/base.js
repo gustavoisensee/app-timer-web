@@ -2,10 +2,7 @@ const apiUrl = (
   process.env.REACT_APP_PATH_API || 'https://my-finances-api-v1.herokuapp.com/'
 );
 
-const createUrl = (path) => {
-  console.log('TEST: ', `${apiUrl}${path}`);
-  return `${apiUrl}${path}`;
-}
+const createUrl = (path) => `${apiUrl}${path}`;
 
 const defaultHeaders = ({
   mode: 'cors',
