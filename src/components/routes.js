@@ -9,15 +9,18 @@ import {
   ACCOUNT_RESET_PASSWORD,
   ACCOUNT_CREATE
 } from '../constants/routes';
+import Container from './atoms/Container/Container';
 
 const routes = () => (
   <Router>
-    <Switch>
-      <Route exact path={ACCOUNT_LOGOUT} component={Logout} />
-      <Route exact path={ACCOUNT_RESET_PASSWORD} component={ResetPassword} />
-      <Route exact path={ACCOUNT_CREATE} component={CreateUser} />
-      <Route path='*' component={App} />
-    </Switch>
+    <Container>
+      <Switch>
+          <Route exact path={ACCOUNT_LOGOUT} component={Logout} />
+          <Route exact path={ACCOUNT_RESET_PASSWORD} component={ResetPassword} />
+          <Route exact path={ACCOUNT_CREATE} component={CreateUser} />
+          <Route path='*' component={App} />
+      </Switch>
+    </Container>
   </Router>
 );
 
