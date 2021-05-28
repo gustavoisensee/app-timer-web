@@ -79,8 +79,8 @@ class Dashboard extends PureComponent {
               </select>
             </div>
             <div className="Dashboard__add-button">
-              <button type="button" onClick={this.handleToggleAddNewMonth}>Add month</button>
-              <button type="submit" className="btn-secondary">
+              <button type="button" onClick={this.handleToggleAddNewMonth} className='btn'>Add month</button>
+              <button type="submit" className="btn btn-secondary">
                 {isSubmitting ?
                   <img alt='' src={image} className='Loading' style={{ width: 14, height: 14 }} /> :
                   'Save'

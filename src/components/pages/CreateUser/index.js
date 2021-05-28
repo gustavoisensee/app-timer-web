@@ -1,4 +1,5 @@
 import { withFormik } from 'formik';
+import { toast } from 'react-toastify';
 import { create } from '../../../services/account';
 import CreateUser from './CreateUser';
 
@@ -34,11 +35,16 @@ const EnhancedForm = withFormik({
         if (code === 400) {
           setErrors({ api: message });
           setSubmitting(false);
+          toast('Something went wrong, please try again!', { type: toast.TYPE.ERROR });
         } else {
           resetForm();
+          toast('User has been created!');
         }
       })
-      .catch(() => setSubmitting(false));
+      .catch(() => {
+        setSubmitting(false);
+        toast('Something went wrong, please try again!', { type: toast.TYPE.ERROR });
+      });
   },
 
   displayName: 'CreateUser',

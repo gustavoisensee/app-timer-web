@@ -32,6 +32,7 @@ class ResetPassword extends PureComponent {
           <button
             type='submit'
             disabled={isSubmitting}
+            className='btn'
           >
             {isSubmitting ? 'Submitting...' : 'Reset'}
           </button>

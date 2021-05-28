@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import image from '../../../assets/loading.png';
 import './styles.scss';
 
@@ -36,12 +37,15 @@ const Login = props => {
         placeholder='******'
       />
       {errors.password && touched.password && <div className='required'>{errors.password}</div>}
-      <button type='submit' disabled={isSubmitting}>
+      <button type='submit' disabled={isSubmitting} className='btn'>
         {isSubmitting ?
           <img alt='' src={image} className='Loading' /> :
           'Sign in'
         }
       </button>
+      <div className='links-container'>
+        <Link to='/account/create'>Create an account</Link>
+      </div>
     </form>
   );
 };

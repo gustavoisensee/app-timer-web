@@ -1,4 +1,4 @@
-.Login {
+.CreateUser {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,5 +13,10 @@
   span {
     padding-left: 8px;
     font-weight: bold;
+  }
+
+  .links-container {
+    display: flex;
+    justify-content: center;
   }
 }

@@ -1,4 +1,5 @@
 import { withFormik } from 'formik';
+import { toast } from 'react-toastify';
 import { login } from '../../../services/account';
 import { storeData } from '../../../services/storage';
 import { USER } from '../../../constants/storageKeys';
@@ -32,13 +33,17 @@ const EnhancedForm = withFormik({
         if (code === 400) {
           setErrors({ api: message });
           setSubmitting(false);
+          toast('Login or password is invalid!', { type: toast.TYPE.ERROR });
         } else {
           storeData(USER, result);
           resetForm();
           window.location.reload();
         }
       })
-      .catch(() => setSubmitting(false));
+      .catch(() => {
+        setSubmitting(false);
+        toast('Something went wrong, please try again!', { type: toast.TYPE.ERROR });
+      });
   },
 
   displayName: 'Login',

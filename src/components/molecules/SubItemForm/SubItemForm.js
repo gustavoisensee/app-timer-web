@@ -42,12 +42,12 @@ class SubItemForm extends Component {
         </div>
         <div>
           <button
-            className="AddNewMonth__button"
+            className="btn AddNewMonth__button"
             type="button"
             onClick={() => this.handleAddNewSubItem(i)}
           >Save</button>
           <button
-            className="AddNewMonth__button"
+            className="btn AddNewMonth__button"
             type="button"
             onClick={handleToggle}
           >Cancel</button>

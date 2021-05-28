@@ -47,7 +47,7 @@ class Logout extends PureComponent {
       <div className="Logout">
         <span>You are logged out!</span>
         <span>{`You will be redirected to Login page in ${seconds} seconds.`}</span>
-        <button type="button" onClick={this.handleLogout}>Go to Login</button>
+        <button type="button" onClick={this.handleLogout} className='btn'>Go to Login</button>
       </div>
     );
   }

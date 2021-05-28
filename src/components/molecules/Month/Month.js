@@ -80,7 +80,7 @@ class Group extends Component {
           </div>
         </div>
         <div className={cardContainerClass}>
-          <button type="button" className="Card__group-add" onClick={this.handleToggleAddNewItem}>Add Item</button>
+          <button type="button" className="btn Card__group-add" onClick={this.handleToggleAddNewItem}>Add Item</button>
           {addNewItem && (
             <ItemForm handleToggle={this.handleToggleAddNewItem} {...this.props} />
           )}

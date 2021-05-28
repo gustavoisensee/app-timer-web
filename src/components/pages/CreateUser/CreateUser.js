@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import image from '../../../assets/loading.png';
 import './styles.scss';
 
@@ -14,7 +15,7 @@ const CreateUser = props => {
   } = props;
 
   return (
-    <form onSubmit={handleSubmit} className='Login'>
+    <form onSubmit={handleSubmit} className='CreateUser'>
       <h1>Create User</h1>
 
       <span>Name</span>
@@ -50,12 +51,15 @@ const CreateUser = props => {
       />
       {errors.password && touched.password && <div className='required'>{errors.password}</div>}
 
-      <button type='submit' disabled={isSubmitting}>
+      <button type='submit' disabled={isSubmitting} className='btn'>
         {isSubmitting ?
           <img alt='' src={image} className='Loading' /> :
           'Create'
         }
       </button>
+      <div className='links-container'>
+        <Link to='/'>Back to Login</Link>
+      </div>
     </form>
   );
 };
